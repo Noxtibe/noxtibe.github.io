@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>{{ page.title }} - {{ site.title }}</title>
     <style>
-        /* Thème sombre global */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -13,7 +12,6 @@
             color: #ffffff;
         }
 
-        /* Barre de navigation */
         .navbar {
             display: flex;
             justify-content: flex-end;
@@ -33,7 +31,6 @@
             color: #00adb5;
         }
 
-        /* Contenu de la page */
         .content {
             padding: 2rem;
         }
@@ -45,17 +42,14 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <div class="navbar">
-        <a href="index.html">HOME</a>
-        <a href="games.html">GAMES</a>
-        <a href="about.html">ABOUT</a>
+        <a href="{{ '/' | relative_url }}">HOME</a>
+        <a href="{{ '/games' | relative_url }}">GAMES</a>
+        <a href="{{ '/about' | relative_url }}">ABOUT</a>
     </div>
 
-    <!-- Contenu -->
     <div class="content">
-        <h1>My Games</h1>
-		<p>Here you can find my game projects.</p>
+        {{ content }}
     </div>
 
 </body>
