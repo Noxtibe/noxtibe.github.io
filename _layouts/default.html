@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <style>
+    /* RESET */
+    * { all: unset; box-sizing: border-box; }
+
+    /* THEME DARK */
+    body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+    }
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #1f1f1f; padding: 1rem;
+    }
+    .logo { font-size: 1.2rem; font-weight: bold; }
+    .menu { display: flex; }
+    .menu a {
+      color: #fff; text-decoration: none;
+      margin-left: 2rem; font-weight: bold;
+      transition: color .3s;
+    }
+    .menu a:hover { color: #00adb5; }
+
+    .hamburger {
+      display: none; font-size: 2rem; cursor: pointer;
+    }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: #1f1f1f;
+    }
+    .mobile-menu a {
+      color: #fff; text-decoration: none;
+      padding: 1rem; border-top: 1px solid #333;
+      font-weight: bold;
+    }
+    .mobile-menu a:hover { color: #00adb5; }
+
+    @media (max-width: 768px) {
+      .menu { display: none; }
+      .hamburger { display: block; }
+    }
+    .content { padding: 2rem; }
+    h1 { color: #00adb5; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">My Site</div>
+    <div class="menu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games' | relative_url }}">GAMES</a>
+      <a href="{{ '/about' | relative_url }}">ABOUT</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="{{ '/' | relative_url }}">HOME</a>
+    <a href="{{ '/games' | relative_url }}">GAMES</a>
+    <a href="{{ '/about' | relative_url }}">ABOUT</a>
+  </div>
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var m = document.getElementById("mobileMenu");
+      m.style.display = (getComputedStyle(m).display === "flex") ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
