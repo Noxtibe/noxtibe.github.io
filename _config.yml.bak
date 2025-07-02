@@ -1,3 +1,5 @@
 # _config.yml
 title: Benoit BARRAU | Gameplay Programmer
 theme: null           # on n’utilise aucun thème préinstallé
+markdown: kramdown
+permalink: pretty     # URLs « propres » (sans .html)
