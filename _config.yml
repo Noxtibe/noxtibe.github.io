@@ -1,3 +1,5 @@
+# Site settings
 title: Benoit BARRAU | Gameplay Programmer
-# pas de thème
-
+theme: null            # disable any pre-installed theme
+markdown: kramdown
+permalink: pretty      # clean URLs without .html
