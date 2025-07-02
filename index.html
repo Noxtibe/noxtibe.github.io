@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home – Benoit BARRAU | Gameplay Programmer</title>
+  <style>
+    /* Reset + Dark theme */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:Arial,sans-serif; background:#121212; color:#fff; }
+    .navbar { display:flex; justify-content:space-between; align-items:center; background:#1f1f1f; padding:1rem; }
+    .logo { font-size:1.2rem; font-weight:bold; }
+    .menu { display:flex; }
+    .menu a { color:#fff; text-decoration:none; margin-left:2rem; font-weight:bold; transition:color .3s; }
+    .menu a:hover { color:#00adb5; }
+    .hamburger { display:none; font-size:2rem; cursor:pointer; }
+    .mobile-menu { display:none; flex-direction:column; background:#1f1f1f; }
+    .mobile-menu a { color:#fff; text-decoration:none; padding:1rem; border-top:1px solid #333; font-weight:bold; }
+    .mobile-menu a:hover { color:#00adb5; }
+    @media (max-width:768px) {
+      .menu { display:none; }
+      .hamburger { display:block; }
+    }
+    .content { padding:2rem; }
+    h1 { color:#00adb5; margin-bottom:1rem; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">Benoit BARRAU</div>
+    <div class="menu">
+      <a href="index.html">HOME</a>
+      <a href="games.html">GAMES</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="games.html">GAMES</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+
+  <div class="content">
+    <h1>Welcome to My Website</h1>
+    <p>This is the home page. Use the navigation bar to explore the site.</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const m = document.getElementById("mobileMenu");
+      m.style.display = getComputedStyle(m).display === "flex" ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
