@@ -2,133 +2,132 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+    }
 
-        /* Navbar container */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1f1f1f;
-            padding: 1rem;
-        }
+    /* Navbar container */
+    .navbar {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      background-color: #1f1f1f !important;
+      padding: 1rem !important;
+    }
 
-        .logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #ffffff;
-        }
+    .logo {
+      font-weight: bold !important;
+      font-size: 1.2rem !important;
+      color: #ffffff !important;
+    }
 
-        /* Desktop menu */
-        .menu {
-            display: flex;
-        }
+    /* Desktop menu */
+    .menu {
+      display: flex !important;
+    }
 
-        .menu a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
+    .menu a {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      margin-left: 2rem !important;
+      font-weight: bold !important;
+      transition: color 0.3s !important;
+    }
 
-        .menu a:hover {
-            color: #00adb5;
-        }
+    .menu a:hover {
+      color: #00adb5 !important;
+    }
 
-        /* Hamburger menu icon */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-        }
+    /* Hamburger icon, caché par défaut */
+    .hamburger {
+      display: none !important;
+      font-size: 2rem !important;
+      cursor: pointer !important;
+    }
 
-        /* Mobile menu */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            background-color: #1f1f1f;
-        }
+    /* Mobile menu, caché par défaut */
+    .mobile-menu {
+      display: none !important;
+      flex-direction: column !important;
+      background-color: #1f1f1f !important;
+    }
 
-        .mobile-menu a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 1rem;
-            font-weight: bold;
-            border-top: 1px solid #333333;
-        }
+    .mobile-menu a {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      padding: 1rem !important;
+      font-weight: bold !important;
+      border-top: 1px solid #333333 !important;
+    }
 
-        .mobile-menu a:hover {
-            color: #00adb5;
-        }
+    .mobile-menu a:hover {
+      color: #00adb5 !important;
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-            }
+    /* Responsive break-point */
+    @media (max-width: 768px) {
+      .menu {
+        display: none !important;
+      }
+      .hamburger {
+        display: block !important;
+      }
+    }
 
-            .hamburger {
-                display: block;
-            }
-        }
+    .content {
+      padding: 2rem !important;
+    }
 
-        .content {
-            padding: 2rem;
-        }
-
-        h1 {
-            color: #00adb5;
-        }
-    </style>
+    h1 {
+      color: #00adb5 !important;
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">My Site</div>
-        <div class="menu">
-            <a href="{{ '/' | relative_url }}">HOME</a>
-            <a href="{{ '/games' | relative_url }}">GAMES</a>
-            <a href="{{ '/about' | relative_url }}">ABOUT</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">My Site</div>
+    <div class="menu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games' | relative_url }}">GAMES</a>
+      <a href="{{ '/about' | relative_url }}">ABOUT</a>
     </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="{{ '/' | relative_url }}">HOME</a>
-        <a href="{{ '/games' | relative_url }}">GAMES</a>
-        <a href="{{ '/about' | relative_url }}">ABOUT</a>
-    </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="{{ '/' | relative_url }}">HOME</a>
+    <a href="{{ '/games' | relative_url }}">GAMES</a>
+    <a href="{{ '/about' | relative_url }}">ABOUT</a>
+  </div>
 
-    <!-- Page Content -->
-    <div class="content">
-        {{ content }}
-    </div>
+  <!-- Page Content -->
+  <div class="content">
+    {{ content }}
+  </div>
 
-    <!-- JavaScript -->
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
-    </script>
-
+  <!-- JS en bas pour être sûr que tout est chargé -->
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("mobileMenu");
+      // bascule entre hidden et flex
+      if (getComputedStyle(menu).display === "flex") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "flex";
+      }
+    }
+  </script>
 </body>
 
 </html>
