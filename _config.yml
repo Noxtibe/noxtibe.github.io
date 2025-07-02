@@ -1,2 +1,5 @@
 title: Benoit BARRAU | Gameplay Programmer
-# pas de theme
+theme: null      # ← on désactive tout thème
+markdown: kramdown
+permalink: pretty
+
