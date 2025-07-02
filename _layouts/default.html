@@ -5,110 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} – {{ site.title }}</title>
   <style>
-    /* RESET anything Jekyll/theme might inject */
-    * { all: unset; box-sizing: border-box; }
-
-    /* DARK THEME */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #fff;
+    /* Reset default browser styles */
+    * {
+      all: unset;
+      box-sizing: border-box;
     }
 
-    /* NAVBAR */
+    /* Dark theme base styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    /* Navbar container */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #1f1f1f;
+      background-color: #1f1f1f;
       padding: 1rem;
     }
+
+    /* Site title / logo */
     .logo {
       font-size: 1.2rem;
       font-weight: bold;
     }
+
+    /* Desktop menu links */
     .menu {
       display: flex;
     }
     .menu a {
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       margin-left: 2rem;
       font-weight: bold;
-      transition: color .3s;
+      transition: color 0.3s;
     }
     .menu a:hover {
       color: #00adb5;
     }
 
-    /* HAMBURGER (hidden on desktop) */
+    /* Hamburger icon (hidden on desktop) */
     .hamburger {
       display: none;
       font-size: 2rem;
       cursor: pointer;
     }
 
-    /* MOBILE MENU */
+    /* Mobile menu (hidden by default) */
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: #1f1f1f;
+      background-color: #1f1f1f;
     }
+    /* Mobile menu link styles */
     .mobile-menu a {
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       padding: 1rem;
-      border-top: 1px solid #333;
+      border-top: 1px solid #333333;
       font-weight: bold;
     }
     .mobile-menu a:hover {
       color: #00adb5;
     }
 
-    /* SHOW/HIDE at <768px */
+    /* Responsive breakpoint: below 768px */
     @media (max-width: 768px) {
-      .menu { display: none; }
-      .hamburger { display: block; }
+      /* Hide desktop menu */
+      .menu {
+        display: none;
+      }
+      /* Show hamburger icon */
+      .hamburger {
+        display: block;
+      }
     }
 
+    /* Page content wrapper */
     .content {
       padding: 2rem;
     }
-    h1 {
+    .content h1 {
       color: #00adb5;
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation bar with logo, desktop menu, and hamburger button -->
   <div class="navbar">
-    <div class="logo">Mon Site</div>
+    <div class="logo">{{ site.title }}</div>
     <div class="menu">
       <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games' | relative_url }}">GAMES</a>
-      <a href="{{ '/about' | relative_url }}">ABOUT</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </div>
 
+  <!-- Mobile menu dropdown -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="{{ '/' | relative_url }}">HOME</a>
-    <a href="{{ '/games' | relative_url }}">GAMES</a>
-    <a href="{{ '/about' | relative_url }}">ABOUT</a>
+    <a href="{{ '/games/' | relative_url }}">GAMES</a>
+    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
   </div>
 
+  <!-- Main page content injected here -->
   <div class="content">
     {{ content }}
   </div>
 
   <script>
+    // Toggle mobile menu visibility on click
     function toggleMenu() {
-      var m = document.getElementById("mobileMenu");
-      m.style.display = getComputedStyle(m).display === "flex"
-        ? "none"
-        : "flex";
+      var menu = document.getElementById("mobileMenu");
+      if (getComputedStyle(menu).display === "flex") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "flex";
+      }
     }
   </script>
 </body>
 </html>
+

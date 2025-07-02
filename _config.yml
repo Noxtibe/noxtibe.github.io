@@ -1,5 +1,6 @@
+# _config.yml
 title: Benoit BARRAU | Gameplay Programmer
-theme: null      # ← on désactive tout thème
+description: "Site statique déployé sur GitHub Pages avec Jekyll"
+theme: null           # on n’utilise aucun thème préinstallé
 markdown: kramdown
-permalink: pretty
-
+permalink: pretty     # URLs « propres » (sans .html)
