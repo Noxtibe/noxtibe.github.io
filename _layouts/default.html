@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,28 @@
             color: #ffffff;
         }
 
+        /* Navbar container */
         .navbar {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
             background-color: #1f1f1f;
             padding: 1rem;
         }
 
-        .navbar a {
+        /* Logo (can be empty or used later) */
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        /* Menu items */
+        .navbar .menu {
+            display: flex;
+        }
+
+        .navbar .menu a {
             color: #ffffff;
             text-decoration: none;
             margin-left: 2rem;
@@ -27,10 +42,52 @@
             transition: color 0.3s;
         }
 
-        .navbar a:hover {
+        .navbar .menu a:hover {
             color: #00adb5;
         }
 
+        /* Hamburger icon (hidden on desktop) */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile menu (hidden by default) */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #1f1f1f;
+            padding: 1rem;
+        }
+
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        .mobile-menu a:hover {
+            color: #00adb5;
+        }
+
+        /* Responsive Rules */
+        @media (max-width: 768px) {
+            .navbar .menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu.show {
+                display: flex;
+            }
+        }
+
+        /* Page content */
         .content {
             padding: 2rem;
         }
@@ -39,18 +96,41 @@
             color: #00adb5;
         }
     </style>
+
+    <script>
+        // Simple menu toggle
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("show");
+        }
+    </script>
 </head>
+
 <body>
 
+    <!-- Navigation -->
     <div class="navbar">
+        <div class="logo">My Site</div>
+        <div class="menu">
+            <a href="{{ '/' | relative_url }}">HOME</a>
+            <a href="{{ '/games' | relative_url }}">GAMES</a>
+            <a href="{{ '/about' | relative_url }}">ABOUT</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
         <a href="{{ '/' | relative_url }}">HOME</a>
         <a href="{{ '/games' | relative_url }}">GAMES</a>
         <a href="{{ '/about' | relative_url }}">ABOUT</a>
     </div>
 
+    <!-- Page Content -->
     <div class="content">
         {{ content }}
     </div>
 
 </body>
+
 </html>
