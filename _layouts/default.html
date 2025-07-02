@@ -3,135 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} – {{ site.title }}</title>
+  <title>{{ page.title }} - {{ site.title }}</title>
   <style>
-    /* Reset default browser styles */
-    * {
-      all: unset;
-      box-sizing: border-box;
-    }
+    /* RESET */
+    * { all: unset; box-sizing: border-box; }
 
-    /* Dark theme base styles */
+    /* THEME DARK */
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #ffffff;
+      background: #121212;
+      color: #fff;
     }
-
-    /* Navbar container */
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #1f1f1f;
-      padding: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: #1f1f1f; padding: 1rem;
     }
-
-    /* Site title / logo */
-    .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    /* Desktop menu links */
-    .menu {
-      display: flex;
-    }
+    .logo { font-size: 1.2rem; font-weight: bold; }
+    .menu { display: flex; }
     .menu a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-weight: bold;
-      transition: color 0.3s;
+      color: #fff; text-decoration: none;
+      margin-left: 2rem; font-weight: bold;
+      transition: color .3s;
     }
-    .menu a:hover {
-      color: #00adb5;
-    }
+    .menu a:hover { color: #00adb5; }
 
-    /* Hamburger icon (hidden on desktop) */
     .hamburger {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
+      display: none; font-size: 2rem; cursor: pointer;
     }
-
-    /* Mobile menu (hidden by default) */
     .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background-color: #1f1f1f;
+      display: none; flex-direction: column;
+      background: #1f1f1f;
     }
-    /* Mobile menu link styles */
     .mobile-menu a {
-      color: #ffffff;
-      text-decoration: none;
-      padding: 1rem;
-      border-top: 1px solid #333333;
+      color: #fff; text-decoration: none;
+      padding: 1rem; border-top: 1px solid #333;
       font-weight: bold;
     }
-    .mobile-menu a:hover {
-      color: #00adb5;
-    }
+    .mobile-menu a:hover { color: #00adb5; }
 
-    /* Responsive breakpoint: below 768px */
     @media (max-width: 768px) {
-      /* Hide desktop menu */
-      .menu {
-        display: none;
-      }
-      /* Show hamburger icon */
-      .hamburger {
-        display: block;
-      }
+      .menu { display: none; }
+      .hamburger { display: block; }
     }
-
-    /* Page content wrapper */
-    .content {
-      padding: 2rem;
-    }
-    .content h1 {
-      color: #00adb5;
-    }
+    .content { padding: 2rem; }
+    h1 { color: #00adb5; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation bar with logo, desktop menu, and hamburger button -->
   <div class="navbar">
-    <div class="logo">{{ site.title }}</div>
+    <div class="logo">My Site</div>
     <div class="menu">
       <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games/' | relative_url }}">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+      <a href="{{ '/games' | relative_url }}">GAMES</a>
+      <a href="{{ '/about' | relative_url }}">ABOUT</a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </div>
 
-  <!-- Mobile menu dropdown -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="{{ '/' | relative_url }}">HOME</a>
-    <a href="{{ '/games/' | relative_url }}">GAMES</a>
-    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    <a href="{{ '/games' | relative_url }}">GAMES</a>
+    <a href="{{ '/about' | relative_url }}">ABOUT</a>
   </div>
 
-  <!-- Main page content injected here -->
   <div class="content">
     {{ content }}
   </div>
 
   <script>
-    // Toggle mobile menu visibility on click
     function toggleMenu() {
-      var menu = document.getElementById("mobileMenu");
-      if (getComputedStyle(menu).display === "flex") {
-        menu.style.display = "none";
-      } else {
-        menu.style.display = "flex";
-      }
+      var m = document.getElementById("mobileMenu");
+      m.style.display = (getComputedStyle(m).display === "flex") ? "none" : "flex";
     }
   </script>
 </body>
 </html>
-
