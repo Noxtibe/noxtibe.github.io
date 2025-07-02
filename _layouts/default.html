@@ -22,19 +22,19 @@
             padding: 1rem;
         }
 
-        /* Logo (can be empty or used later) */
-        .navbar .logo {
+        /* Logo (optional) */
+        .logo {
             font-weight: bold;
             font-size: 1.2rem;
             color: #ffffff;
         }
 
-        /* Menu items */
-        .navbar .menu {
+        /* Desktop menu */
+        .menu {
             display: flex;
         }
 
-        .navbar .menu a {
+        .menu a {
             color: #ffffff;
             text-decoration: none;
             margin-left: 2rem;
@@ -42,48 +42,44 @@
             transition: color 0.3s;
         }
 
-        .navbar .menu a:hover {
+        .menu a:hover {
             color: #00adb5;
         }
 
-        /* Hamburger icon (hidden on desktop) */
+        /* Hamburger button */
         .hamburger {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
         }
 
-        /* Mobile menu (hidden by default) */
+        /* Mobile menu */
         .mobile-menu {
             display: none;
             flex-direction: column;
             background-color: #1f1f1f;
-            padding: 1rem;
         }
 
         .mobile-menu a {
             color: #ffffff;
             text-decoration: none;
-            padding: 0.5rem 0;
+            padding: 1rem;
             font-weight: bold;
+            border-top: 1px solid #333333;
         }
 
         .mobile-menu a:hover {
             color: #00adb5;
         }
 
-        /* Responsive Rules */
+        /* Responsive rules */
         @media (max-width: 768px) {
-            .navbar .menu {
+            .menu {
                 display: none;
             }
 
             .hamburger {
                 display: block;
-            }
-
-            .mobile-menu.show {
-                display: flex;
             }
         }
 
@@ -96,19 +92,11 @@
             color: #00adb5;
         }
     </style>
-
-    <script>
-        // Simple menu toggle
-        function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            menu.classList.toggle("show");
-        }
-    </script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Navbar -->
     <div class="navbar">
         <div class="logo">My Site</div>
         <div class="menu">
@@ -130,6 +118,18 @@
     <div class="content">
         {{ content }}
     </div>
+
+    <!-- Javascript at the end for better loading -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
 
 </body>
 
