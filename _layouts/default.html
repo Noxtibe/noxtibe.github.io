@@ -302,9 +302,9 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="{{ '/' | relative_url }}" onclick="navigateTo('{{ '/' | relative_url }}')">HOME</a>
-      <a href="{{ '/games/' | relative_url }}" onclick="navigateTo('{{ '/games/' | relative_url }}')">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}" onclick="navigateTo('{{ '/about/' | relative_url }}')">ABOUT</a>
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
     </div>
   </div>
 
@@ -342,16 +342,14 @@
       menuOpen = !menuOpen;
     }
 
-    function navigateTo(url) {
-      const menu = document.getElementById("mobileMenu");
-      const hamburger = document.getElementById("hamburger");
-
-      menu.style.maxHeight = "0";
-      hamburger.classList.remove('active');
-      menuOpen = false;
-
-      window.location.href = url;
-    }
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById("mobileMenu").style.maxHeight = "0";
+        document.getElementById("hamburger").classList.remove('active');
+        menuOpen = false;
+      });
+    });
   </script>
 
 </body>
