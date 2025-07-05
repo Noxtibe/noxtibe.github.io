@@ -19,7 +19,7 @@
       color: #ffffff;
     }
 
-    /* Navbar structure in 3 parts */
+    /* Navbar in 3 parts */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -31,7 +31,7 @@
     }
 
     .navbar-left, .navbar-right {
-      width: 33%; /* Equal width for spacing */
+      width: 33%;
       display: flex;
       align-items: center;
     }
@@ -39,7 +39,7 @@
     .navbar-center {
       width: 33%;
       display: flex;
-      justify-content: center; /* Menu always centered */
+      justify-content: center;
       align-items: center;
     }
 
@@ -59,7 +59,7 @@
       color: #00adb5;
     }
 
-    /* Hamburger icon (hidden on desktop) */
+    /* Hamburger icon */
     .hamburger {
       display: none;
       font-size: 2rem;
@@ -68,15 +68,18 @@
       margin-left: auto;
     }
 
-    /* Mobile menu (hidden by default) */
+    /* Mobile menu with animation */
     .mobile-menu {
-      display: none;
+      display: flex;
       flex-direction: column;
       background-color: #1f1f1f;
       position: absolute;
       top: 100%;
       right: 0;
-      z-index: 2;
+      width: 100%;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
     }
 
     .mobile-menu a {
@@ -91,7 +94,7 @@
       color: #00adb5;
     }
 
-    /* Responsive navbar: hide menu on mobile, show hamburger */
+    /* Mobile responsive: hide desktop menu, show hamburger */
     @media (max-width: 768px) {
       .menu {
         display: none;
@@ -156,7 +159,7 @@
   <!-- Navbar -->
   <div class="navbar">
 
-    <!-- Left part (can stay empty) -->
+    <!-- Left part -->
     <div class="navbar-left"></div>
 
     <!-- Centered menu -->
@@ -175,9 +178,9 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games/' | relative_url }}">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+      <a href="{{ '/' | relative_url }}" onclick="closeMenu()">HOME</a>
+      <a href="{{ '/games/' | relative_url }}" onclick="closeMenu()">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}" onclick="closeMenu()">ABOUT</a>
     </div>
   </div>
 
@@ -197,11 +200,24 @@
     {{ content }}
   </div>
 
-  <!-- Hamburger menu toggle -->
+  <!-- Hamburger menu toggle with animation -->
   <script>
+    let menuOpen = false;
+
     function toggleMenu() {
-      var menu = document.getElementById("mobileMenu");
-      menu.style.display = (getComputedStyle(menu).display === "flex") ? "none" : "flex";
+      const menu = document.getElementById("mobileMenu");
+      if (!menuOpen) {
+        menu.style.maxHeight = "500px"; // Enough to show all links
+      } else {
+        menu.style.maxHeight = "0";
+      }
+      menuOpen = !menuOpen;
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.maxHeight = "0";
+      menuOpen = false;
     }
   </script>
 
