@@ -22,7 +22,7 @@
     /* Navbar styles */
     .navbar {
       display: flex;
-      justify-content: center; /* Center the menu */
+      justify-content: space-between; /* space-between to have logo on left and menu/hamburger on right */
       align-items: center;
       background-color: #1f1f1f;
       padding: 1rem;
@@ -46,6 +46,48 @@
       color: #00adb5;
     }
 
+    /* Hamburger icon (hidden on desktop) */
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Mobile menu (hidden by default) */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #1f1f1f;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: 2;
+    }
+
+    .mobile-menu a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 1rem;
+      border-top: 1px solid #333333;
+      font-weight: bold;
+    }
+
+    .mobile-menu a:hover {
+      color: #00adb5;
+    }
+
+    /* Responsive navbar: hamburger on mobile */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
     /* Video background styles (only on homepage) */
     {% if page.url == "/" %}
     .hero-container {
@@ -64,6 +106,13 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
+    }
+
+    /* On mobile: reduce max height of video */
+    @media (max-width: 768px) {
+      .hero-video {
+        max-height: 60vh;
+      }
     }
 
     .hero-title {
@@ -90,9 +139,19 @@
 </head>
 <body>
 
-  <!-- Navbar (always visible and centered) -->
+  <!-- Navbar -->
   <div class="navbar">
     <div class="menu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    </div>
+
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
       <a href="{{ '/' | relative_url }}">HOME</a>
       <a href="{{ '/games/' | relative_url }}">GAMES</a>
       <a href="{{ '/about/' | relative_url }}">ABOUT</a>
@@ -114,6 +173,14 @@
   <div class="content">
     {{ content }}
   </div>
+
+  <!-- Hamburger menu toggle -->
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("mobileMenu");
+      menu.style.display = (getComputedStyle(menu).display === "flex") ? "none" : "flex";
+    }
+  </script>
 
 </body>
 </html>
