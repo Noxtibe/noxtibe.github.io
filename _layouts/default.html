@@ -59,12 +59,46 @@
       color: #00adb5;
     }
 
-    /* Hamburger icon always on the left */
+    /* Hamburger icon container */
     .hamburger {
       display: block;
-      font-size: 2rem;
+      width: 24px;
+      height: 18px;
+      position: relative;
       cursor: pointer;
       user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    /* Hamburger lines */
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 7.5px; }
+    .hamburger span:nth-child(3) { top: 15px; }
+
+    /* Animation: transform hamburger to X */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 7.5px;
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 7.5px;
     }
 
     /* Hide hamburger on desktop */
@@ -162,7 +196,11 @@
 
     <!-- Left part with hamburger always on the left -->
     <div class="navbar-left">
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
 
     <!-- Centered menu -->
@@ -207,10 +245,14 @@
 
     function toggleMenu() {
       const menu = document.getElementById("mobileMenu");
+      const hamburger = document.getElementById("hamburger");
+
       if (!menuOpen) {
         menu.style.maxHeight = "500px";
+        hamburger.classList.add('active'); // Animate to X
       } else {
         menu.style.maxHeight = "0";
+        hamburger.classList.remove('active'); // Animate back to ☰
       }
       menuOpen = !menuOpen;
     }
@@ -218,9 +260,13 @@
     // Force navigation and close menu properly
     function navigateTo(url) {
       const menu = document.getElementById("mobileMenu");
+      const hamburger = document.getElementById("hamburger");
+
       menu.style.maxHeight = "0";
+      hamburger.classList.remove('active');
       menuOpen = false;
-      window.location.href = url; // Force page reload
+
+      window.location.href = url; // Force page change
     }
   </script>
 
