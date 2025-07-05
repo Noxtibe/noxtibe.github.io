@@ -22,7 +22,7 @@
     /* Navbar styles */
     .navbar {
       display: flex;
-      justify-content: space-between; /* space-between to have logo on left and menu/hamburger on right */
+      justify-content: space-between; /* Keep hamburger on the left, menu centered on desktop */
       align-items: center;
       background-color: #1f1f1f;
       padding: 1rem;
@@ -30,6 +30,7 @@
       z-index: 2;
     }
 
+    /* Desktop menu */
     .menu {
       display: flex;
     }
@@ -52,6 +53,7 @@
       font-size: 2rem;
       cursor: pointer;
       user-select: none;
+      margin-left: auto; /* Push hamburger to the right on mobile */
     }
 
     /* Mobile menu (hidden by default) */
@@ -141,23 +143,24 @@
 
   <!-- Navbar -->
   <div class="navbar">
-  <!-- Hamburger icon (left on desktop, right on mobile) -->
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-  <!-- Desktop menu -->
-  <div class="menu">
-    <a href="{{ '/' | relative_url }}">HOME</a>
-    <a href="{{ '/games/' | relative_url }}">GAMES</a>
-    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
-  </div>
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="{{ '/' | relative_url }}">HOME</a>
-    <a href="{{ '/games/' | relative_url }}">GAMES</a>
-    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    <!-- Desktop menu -->
+    <div class="menu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    </div>
   </div>
-</div>
 
   {% if page.url == "/" %}
   <!-- Hero section with video and title only on home -->
