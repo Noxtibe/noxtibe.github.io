@@ -94,7 +94,7 @@
       color: #00adb5;
     }
 
-    /* Mobile responsive: hide desktop menu, show hamburger */
+    /* Responsive navbar: hide desktop menu, show hamburger */
     @media (max-width: 768px) {
       .menu {
         display: none;
@@ -178,9 +178,9 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="{{ '/' | relative_url }}" onclick="closeMenu()">HOME</a>
-      <a href="{{ '/games/' | relative_url }}" onclick="closeMenu()">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}" onclick="closeMenu()">ABOUT</a>
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
     </div>
   </div>
 
@@ -200,25 +200,28 @@
     {{ content }}
   </div>
 
-  <!-- Hamburger menu toggle with animation -->
+  <!-- Hamburger menu toggle -->
   <script>
     let menuOpen = false;
 
     function toggleMenu() {
       const menu = document.getElementById("mobileMenu");
       if (!menuOpen) {
-        menu.style.maxHeight = "500px"; // Enough to show all links
+        menu.style.maxHeight = "500px";
       } else {
         menu.style.maxHeight = "0";
       }
       menuOpen = !menuOpen;
     }
 
-    function closeMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.style.maxHeight = "0";
-      menuOpen = false;
-    }
+    // Close the menu automatically when clicking any link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById("mobileMenu");
+        menu.style.maxHeight = "0";
+        menuOpen = false;
+      });
+    });
   </script>
 
 </body>
