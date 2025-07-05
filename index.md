@@ -60,7 +60,7 @@ permalink: /
 
 <div class="hero">
   <video class="video-bg" autoplay muted loop>
-    <source src="{{ '/assets/background.mp4' | relative_url }}" type="video/mp4">
+    <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <h1>Benoit BARRAU | Gameplay Programmer</h1>
