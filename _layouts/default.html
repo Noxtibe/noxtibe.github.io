@@ -59,13 +59,19 @@
       color: #00adb5;
     }
 
-    /* Hamburger icon */
+    /* Hamburger icon always on the left */
     .hamburger {
-      display: none;
+      display: block;
       font-size: 2rem;
       cursor: pointer;
       user-select: none;
-      margin-left: auto;
+    }
+
+    /* Hide hamburger on desktop */
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none;
+      }
     }
 
     /* Mobile menu with animation */
@@ -75,7 +81,7 @@
       background-color: #1f1f1f;
       position: absolute;
       top: 100%;
-      right: 0;
+      left: 0;
       width: 100%;
       overflow: hidden;
       max-height: 0;
@@ -94,14 +100,10 @@
       color: #00adb5;
     }
 
-    /* Responsive navbar: hide desktop menu, show hamburger */
+    /* Hide menu on mobile by default */
     @media (max-width: 768px) {
       .menu {
         display: none;
-      }
-
-      .hamburger {
-        display: block;
       }
     }
 
@@ -125,7 +127,6 @@
       z-index: 0;
     }
 
-    /* On mobile: reduce max height of video */
     @media (max-width: 768px) {
       .hero-video {
         max-height: 60vh;
@@ -159,8 +160,10 @@
   <!-- Navbar -->
   <div class="navbar">
 
-    <!-- Left part -->
-    <div class="navbar-left"></div>
+    <!-- Left part with hamburger always on the left -->
+    <div class="navbar-left">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
 
     <!-- Centered menu -->
     <div class="navbar-center">
@@ -171,16 +174,14 @@
       </div>
     </div>
 
-    <!-- Right part with hamburger -->
-    <div class="navbar-right">
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </div>
+    <!-- Right part (empty) -->
+    <div class="navbar-right"></div>
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games/' | relative_url }}">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+      <a href="{{ '/' | relative_url }}" onclick="navigateTo('{{ '/' | relative_url }}')">HOME</a>
+      <a href="{{ '/games/' | relative_url }}" onclick="navigateTo('{{ '/games/' | relative_url }}')">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}" onclick="navigateTo('{{ '/about/' | relative_url }}')">ABOUT</a>
     </div>
   </div>
 
@@ -214,14 +215,13 @@
       menuOpen = !menuOpen;
     }
 
-    // Close the menu automatically when clicking any link
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        const menu = document.getElementById("mobileMenu");
-        menu.style.maxHeight = "0";
-        menuOpen = false;
-      });
-    });
+    // Force navigation and close menu properly
+    function navigateTo(url) {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.maxHeight = "0";
+      menuOpen = false;
+      window.location.href = url; // Force page reload
+    }
   </script>
 
 </body>
