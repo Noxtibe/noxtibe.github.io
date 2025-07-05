@@ -22,7 +22,7 @@
     /* Navbar styles */
     .navbar {
       display: flex;
-      justify-content: center; /* Center links horizontally */
+      justify-content: center; /* Center the menu */
       align-items: center;
       background-color: #1f1f1f;
       padding: 1rem;
@@ -46,7 +46,7 @@
       color: #00adb5;
     }
 
-    /* Video background (only on home) */
+    /* Video background styles (only on homepage) */
     {% if page.url == "/" %}
     .hero-container {
       position: relative;
@@ -76,6 +76,7 @@
       text-align: center;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
       z-index: 1;
+      white-space: pre-wrap;
     }
     {% endif %}
 
@@ -89,7 +90,7 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar (always visible and centered) -->
   <div class="navbar">
     <div class="menu">
       <a href="{{ '/' | relative_url }}">HOME</a>
@@ -99,7 +100,7 @@
   </div>
 
   {% if page.url == "/" %}
-  <!-- Hero section with video and title -->
+  <!-- Hero section with video and title only on home -->
   <div class="hero-container">
     <video class="hero-video" autoplay muted loop playsinline>
       <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4">
