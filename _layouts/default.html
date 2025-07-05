@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Load Poppins font with multiple weights -->
+  <!-- Load Poppins font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Load Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pO7K9hE4qP9XgkZ4/f4Qb+vdgEsCEUQFQQyyZHLWFS0zVtAO5+KxU+74P7MNk0ZTmbfS69A7u4FH6hzrZXZzLg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* Reset and base styles */
@@ -20,9 +26,9 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    body,
+    html {
       height: 100%;
-      /* Font stack with fallback */
       font-family: 'Poppins', 'Arial', 'Helvetica', sans-serif;
       background-color: #121212;
       color: #ffffff;
@@ -33,13 +39,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #000000; /* Fully black bar */
+      background-color: #000000;
       padding: 1rem;
       position: relative;
       z-index: 2;
     }
 
-    .navbar-left, .navbar-right {
+    .navbar-left,
+    .navbar-right {
       width: 33%;
       display: flex;
       align-items: center;
@@ -92,9 +99,17 @@
       transition: all 0.3s ease;
     }
 
-    .hamburger span:nth-child(1) { top: 0; }
-    .hamburger span:nth-child(2) { top: 7.5px; }
-    .hamburger span:nth-child(3) { top: 15px; }
+    .hamburger span:nth-child(1) {
+      top: 0;
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 7.5px;
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 15px;
+    }
 
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg);
@@ -153,6 +168,19 @@
       }
     }
 
+    /* Social icons */
+    .social-icon {
+      color: #ffffff;
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      transition: color 0.3s, transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: #FFA500;
+      transform: scale(1.2);
+    }
+
     /* Video background styles (only on homepage) */
     {% if page.url == "/" %}
     .hero-container {
@@ -206,12 +234,13 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
   <div class="navbar">
 
-    <!-- Left part with hamburger always on the left -->
+    <!-- Left part with hamburger -->
     <div class="navbar-left">
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span>
@@ -229,8 +258,17 @@
       </div>
     </div>
 
-    <!-- Right part (empty) -->
-    <div class="navbar-right"></div>
+    <!-- Right part with social icons -->
+    <div class="navbar-right">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/benoit-barrau-927309355/" target="_blank" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/Noxtibe" target="_blank" class="social-icon">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
@@ -287,4 +325,5 @@
   </script>
 
 </body>
+
 </html>
