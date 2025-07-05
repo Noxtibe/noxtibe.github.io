@@ -28,7 +28,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #1f1f1f;
+      background-color: #000000; /* Fully black bar */
       padding: 1rem;
       position: relative;
       z-index: 2;
@@ -56,12 +56,13 @@
       text-decoration: none;
       margin: 0 1.5rem;
       font-weight: 600;
-      transition: color 0.3s, transform 0.3s ease; /* Added transform for scale */
+      font-size: 1.5rem; /* Larger text size */
+      transition: color 0.3s, transform 0.3s ease;
     }
 
     .menu a:hover {
-      color: #FFA500; /* Orange color on hover */
-      transform: scale(1.1); /* Slight scale on hover */
+      color: #FFA500;
+      transform: scale(1.1);
     }
 
     /* Hamburger icon container */
@@ -115,7 +116,7 @@
     .mobile-menu {
       display: flex;
       flex-direction: column;
-      background-color: #1f1f1f;
+      background-color: #000000; /* Fully black dropdown menu */
       position: absolute;
       top: 100%;
       left: 0;
@@ -131,12 +132,13 @@
       padding: 1rem;
       border-top: 1px solid #333333;
       font-weight: 600;
-      transition: color 0.3s, transform 0.3s ease; /* Added transform for scale */
+      font-size: 1.5rem; /* Larger text size on mobile menu */
+      transition: color 0.3s, transform 0.3s ease;
     }
 
     .mobile-menu a:hover {
-      color: #FFA500; /* Orange color on hover */
-      transform: scale(1.1); /* Slight scale on hover */
+      color: #FFA500;
+      transform: scale(1.1);
     }
 
     /* Hide menu on mobile by default */
