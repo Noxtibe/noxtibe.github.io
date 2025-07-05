@@ -19,15 +19,28 @@
       color: #ffffff;
     }
 
-    /* Navbar styles */
+    /* Navbar structure in 3 parts */
     .navbar {
       display: flex;
-      justify-content: center; /* Center menu on desktop */
+      justify-content: space-between;
       align-items: center;
       background-color: #1f1f1f;
       padding: 1rem;
       position: relative;
       z-index: 2;
+    }
+
+    .navbar-left, .navbar-right {
+      width: 33%; /* Equal width for spacing */
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-center {
+      width: 33%;
+      display: flex;
+      justify-content: center; /* Menu always centered */
+      align-items: center;
     }
 
     .menu {
@@ -46,14 +59,13 @@
       color: #00adb5;
     }
 
-    /* Hamburger icon (hidden on desktop, absolute right on mobile) */
+    /* Hamburger icon (hidden on desktop) */
     .hamburger {
       display: none;
       font-size: 2rem;
       cursor: pointer;
       user-select: none;
-      position: absolute;
-      right: 1rem;
+      margin-left: auto;
     }
 
     /* Mobile menu (hidden by default) */
@@ -144,15 +156,22 @@
   <!-- Navbar -->
   <div class="navbar">
 
-    <!-- Desktop menu (centered) -->
-    <div class="menu">
-      <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games/' | relative_url }}">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    <!-- Left part (can stay empty) -->
+    <div class="navbar-left"></div>
+
+    <!-- Centered menu -->
+    <div class="navbar-center">
+      <div class="menu">
+        <a href="{{ '/' | relative_url }}">HOME</a>
+        <a href="{{ '/games/' | relative_url }}">GAMES</a>
+        <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+      </div>
     </div>
 
-    <!-- Hamburger icon (only on mobile, absolute right) -->
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <!-- Right part with hamburger -->
+    <div class="navbar-right">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
