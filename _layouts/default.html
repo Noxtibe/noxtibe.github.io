@@ -56,11 +56,12 @@
       text-decoration: none;
       margin: 0 1.5rem;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.3s, transform 0.3s ease; /* Added transform for scale */
     }
 
     .menu a:hover {
-      color: #00adb5;
+      color: #FFA500; /* Orange color on hover */
+      transform: scale(1.1); /* Slight scale on hover */
     }
 
     /* Hamburger icon container */
@@ -130,10 +131,12 @@
       padding: 1rem;
       border-top: 1px solid #333333;
       font-weight: 600;
+      transition: color 0.3s, transform 0.3s ease; /* Added transform for scale */
     }
 
     .mobile-menu a:hover {
-      color: #00adb5;
+      color: #FFA500; /* Orange color on hover */
+      transform: scale(1.1); /* Slight scale on hover */
     }
 
     /* Hide menu on mobile by default */
@@ -175,7 +178,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #ffffff;
-      font-size: clamp(1.5rem, 4vw, 2.5rem); /* Smaller title */
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       text-align: center;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
       z-index: 1;
@@ -253,10 +256,10 @@
 
       if (!menuOpen) {
         menu.style.maxHeight = "500px";
-        hamburger.classList.add('active'); // Animate to X
+        hamburger.classList.add('active');
       } else {
         menu.style.maxHeight = "0";
-        hamburger.classList.remove('active'); // Animate back to ☰
+        hamburger.classList.remove('active');
       }
       menuOpen = !menuOpen;
     }
