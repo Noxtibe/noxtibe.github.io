@@ -2,36 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- make site responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} – {{ site.title }}</title>
-
   <style>
-    /* Reset default browser styles and set box-sizing */
-    *, *::before, *::after {
+    /* Reset and base styles */
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Base dark theme */
-    body {
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
       background-color: #121212;
       color: #ffffff;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
     }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} – {{ site.title }}</title>
-  <style>
-    /* … your reset, dark theme, nav, menu, etc. … */
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: center; /* Center links horizontally */
+      align-items: center;
+      background-color: #1f1f1f;
+      padding: 1rem;
+      position: relative;
+      z-index: 2;
+    }
 
-    /* ----------- Hero container & video ------------ */
+    .menu {
+      display: flex;
+    }
+
+    .menu a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #00adb5;
+    }
+
+    /* Video background (only on home) */
     {% if page.url == "/" %}
     .hero-container {
       position: relative;
@@ -39,220 +54,65 @@
       height: 100vh;
       overflow: hidden;
     }
+
     .hero-video {
       position: absolute;
-      top: 50%; left: 50%;
-      width: 100%; height: 100%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      z-index: -1;
+      z-index: 0;
     }
-    .hero-content {
+
+    .hero-title {
       position: absolute;
-      inset: 0;              /* shorthand for top/right/bottom/left:0 */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 1rem;       /* gutter on small screens */
-      z-index: 1;
-    }
-    .hero-content h1 {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: #ffffff;
-      font-size: clamp(2rem, 8vw, 3rem);
-      margin: 0;
-      text-shadow: 0 0 15px rgba(0,0,0,0.7);
-    }
-    @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: clamp(2rem, 10vw, 2.5rem);
-      }
+      font-size: clamp(2rem, 6vw, 4rem);
+      text-align: center;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      z-index: 1;
     }
     {% endif %}
 
-  {% if page.url == "/" %}
-  <!-- HERO ON HOME PAGE ONLY -->
-  <div class="hero-container">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4">
-    </video>
-    <div class="hero-content">
-      <h1>{{ site.title }}</h1>
-    </div>
-  </div>
-  {% endif %}
-
-  <!-- NAVBAR (always visible) -->
-  <div class="navbar">
-    <div class="logo">{{ site.title }}</div>
-    <div class="menu">
-      <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games/' | relative_url }}">GAMES</a>
-      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="{{ '/' | relative_url }}">HOME</a>
-    <a href="{{ '/games/' | relative_url }}">GAMES</a>
-    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
-  </div>
-
-  <!-- PAGE CONTENT -->
-  <div class="content">
-    {{ content }}
-  </div>
-
-  <script>
-    function toggleMenu() {
-      var m = document.getElementById("mobileMenu");
-      m.style.display = getComputedStyle(m).display === "flex"
-        ? "none" : "flex";
-    }
-  </script>
-</body>
-</html>
-
-
-    /* ----------------
-       Navbar & Menu
-       ---------------- */
-    /* Navbar container */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #1f1f1f;
-      padding: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    /* Logo / site title */
-    .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    /* Desktop links */
-    .menu {
-      display: flex;
-    }
-    .menu a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    .menu a:hover {
-      color: #00adb5;
-    }
-
-    /* ----------------
-       Mobile Hamburger
-       ---------------- */
-    /* Hamburger icon hidden on desktop */
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    /* Mobile dropdown menu hidden by default */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background-color: #1f1f1f;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      z-index: 1;
-    }
-    .mobile-menu a {
-      color: #ffffff;
-      text-decoration: none;
-      padding: 1rem;
-      border-top: 1px solid #333333;
-      font-weight: bold;
-    }
-    .mobile-menu a:hover {
-      color: #00adb5;
-    }
-    /* Show hamburger & hide desktop links under 768px */
-    @media (max-width: 768px) {
-      .menu {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
-    }
-
-    /* ----------------
-       Page Content
-       ---------------- */
+    /* Page content styles */
     .content {
       padding: 2rem;
       position: relative;
-      z-index: 1;
-    }
-    .content h1 {
-      color: #00adb5;
-      margin-bottom: 1rem;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
 
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="menu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    </div>
+  </div>
+
   {% if page.url == "/" %}
-    <!-- Fullscreen video background on home -->
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="{{ '/assets/poster.jpg' | relative_url }}">
-      <source
-        src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}"
-        type="video/mp4">
-      <!-- Fallback text if video not supported -->
+  <!-- Hero section with video and title -->
+  <div class="hero-container">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <!-- Centered site title over video -->
-    <div class="hero-title">{{ site.title }}</div>
+    <div class="hero-title">Benoit BARRAU | Gameplay Programmer</div>
+  </div>
   {% endif %}
 
-  <!-- Navigation bar -->
-  <div class="navbar">
-    <div class="logo">{{ site.title }}</div>
-    <div class="menu">
-      <a href="{{ '/'   | relative_url }}">HOME</a>
-      <a href="{{ '/games/'  | relative_url }}">GAMES</a>
-      <a href="{{ '/about/'  | relative_url }}">ABOUT</a>
-    </div>
-    <!-- Hamburger button for mobile -->
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </div>
-
-  <!-- Mobile dropdown menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="{{ '/'   | relative_url }}">HOME</a>
-    <a href="{{ '/games/'  | relative_url }}">GAMES</a>
-    <a href="{{ '/about/'  | relative_url }}">ABOUT</a>
-  </div>
-
-  <!-- Injected page content -->
+  <!-- Page content -->
   <div class="content">
     {{ content }}
   </div>
-
-  <script>
-    // Toggle mobile menu visibility
-    function toggleMenu() {
-      var menu = document.getElementById("mobileMenu");
-      menu.style.display =
-        getComputedStyle(menu).display === "flex" ? "none" : "flex";
-    }
-  </script>
 
 </body>
 </html>
