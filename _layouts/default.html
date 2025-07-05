@@ -22,7 +22,7 @@
     /* Navbar styles */
     .navbar {
       display: flex;
-      justify-content: space-between; /* Keep hamburger on the left, menu centered on desktop */
+      justify-content: center; /* Center menu on desktop */
       align-items: center;
       background-color: #1f1f1f;
       padding: 1rem;
@@ -30,7 +30,6 @@
       z-index: 2;
     }
 
-    /* Desktop menu */
     .menu {
       display: flex;
     }
@@ -47,13 +46,14 @@
       color: #00adb5;
     }
 
-    /* Hamburger icon (hidden on desktop) */
+    /* Hamburger icon (hidden on desktop, absolute right on mobile) */
     .hamburger {
       display: none;
       font-size: 2rem;
       cursor: pointer;
       user-select: none;
-      margin-left: auto; /* Push hamburger to the right on mobile */
+      position: absolute;
+      right: 1rem;
     }
 
     /* Mobile menu (hidden by default) */
@@ -79,7 +79,7 @@
       color: #00adb5;
     }
 
-    /* Responsive navbar: hamburger on mobile */
+    /* Responsive navbar: hide menu on mobile, show hamburger */
     @media (max-width: 768px) {
       .menu {
         display: none;
@@ -144,15 +144,15 @@
   <!-- Navbar -->
   <div class="navbar">
 
-    <!-- Hamburger icon -->
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-    <!-- Desktop menu -->
+    <!-- Desktop menu (centered) -->
     <div class="menu">
       <a href="{{ '/' | relative_url }}">HOME</a>
       <a href="{{ '/games/' | relative_url }}">GAMES</a>
       <a href="{{ '/about/' | relative_url }}">ABOUT</a>
     </div>
+
+    <!-- Hamburger icon (only on mobile, absolute right) -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
