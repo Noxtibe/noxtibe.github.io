@@ -2,81 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- make site responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} - {{ site.title }}</title>
+  <title>{{ page.title }} – {{ site.title }}</title>
+
   <style>
-    /* RESET */
-    * { all: unset; box-sizing: border-box; }
+    /* Reset default browser styles and set box-sizing */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    /* THEME DARK */
+    /* Base dark theme */
     body {
-      margin: 0; padding: 0;
+      background-color: #121212;
+      color: #ffffff;
       font-family: Arial, sans-serif;
-      background: #121212;
-      color: #fff;
+      line-height: 1.6;
     }
-    .navbar {
-      display: flex; justify-content: space-between; align-items: center;
-      background: #1f1f1f; padding: 1rem;
-    }
-    .logo { font-size: 1.2rem; font-weight: bold; }
-    .menu { display: flex; }
-    .menu a {
-      color: #fff; text-decoration: none;
-      margin-left: 2rem; font-weight: bold;
-      transition: color .3s;
-    }
-    .menu a:hover { color: #00adb5; }
 
-    .hamburger {
-      display: none; font-size: 2rem; cursor: pointer;
+    /* -------------------------------------
+       Video Hero Styles (only on homepage)
+       ------------------------------------- */
+    {% if page.url == "/" %}
+    /* Video covers entire viewport, sits behind everything */
+    .hero-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
-    .mobile-menu {
-      display: none; flex-direction: column;
-      background: #1f1f1f;
+    /* Title centered over video */
+    .hero-title {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-size: 4vw;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      z-index: 1;
+      white-space: pre-wrap;
     }
-    .mobile-menu a {
-      color: #fff; text-decoration: none;
-      padding: 1rem; border-top: 1px solid #333;
+    /* Slightly larger text on very small screens */
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 8vw;
+      }
+    }
+    {% endif %}
+
+    /* ----------------
+       Navbar & Menu
+       ---------------- */
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1f1f1f;
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    /* Logo / site title */
+    .logo {
+      font-size: 1.2rem;
       font-weight: bold;
     }
-    .mobile-menu a:hover { color: #00adb5; }
-
-    @media (max-width: 768px) {
-      .menu { display: none; }
-      .hamburger { display: block; }
+    /* Desktop links */
+    .menu {
+      display: flex;
     }
-    .content { padding: 2rem; }
-    h1 { color: #00adb5; }
+    .menu a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .menu a:hover {
+      color: #00adb5;
+    }
+
+    /* ----------------
+       Mobile Hamburger
+       ---------------- */
+    /* Hamburger icon hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    /* Mobile dropdown menu hidden by default */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #1f1f1f;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: 1;
+    }
+    .mobile-menu a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 1rem;
+      border-top: 1px solid #333333;
+      font-weight: bold;
+    }
+    .mobile-menu a:hover {
+      color: #00adb5;
+    }
+    /* Show hamburger & hide desktop links under 768px */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* ----------------
+       Page Content
+       ---------------- */
+    .content {
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .content h1 {
+      color: #00adb5;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
 
+  {% if page.url == "/" %}
+    <!-- Fullscreen video background on home -->
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="{{ '/assets/poster.jpg' | relative_url }}">
+      <source
+        src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}"
+        type="video/mp4">
+      <!-- Fallback text if video not supported -->
+      Your browser does not support the video tag.
+    </video>
+    <!-- Centered site title over video -->
+    <div class="hero-title">{{ site.title }}</div>
+  {% endif %}
+
+  <!-- Navigation bar -->
   <div class="navbar">
-    <div class="logo">My Site</div>
+    <div class="logo">{{ site.title }}</div>
     <div class="menu">
-      <a href="{{ '/' | relative_url }}">HOME</a>
-      <a href="{{ '/games' | relative_url }}">GAMES</a>
-      <a href="{{ '/about' | relative_url }}">ABOUT</a>
+      <a href="{{ '/'   | relative_url }}">HOME</a>
+      <a href="{{ '/games/'  | relative_url }}">GAMES</a>
+      <a href="{{ '/about/'  | relative_url }}">ABOUT</a>
     </div>
+    <!-- Hamburger button for mobile -->
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </div>
 
+  <!-- Mobile dropdown menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="{{ '/' | relative_url }}">HOME</a>
-    <a href="{{ '/games' | relative_url }}">GAMES</a>
-    <a href="{{ '/about' | relative_url }}">ABOUT</a>
+    <a href="{{ '/'   | relative_url }}">HOME</a>
+    <a href="{{ '/games/'  | relative_url }}">GAMES</a>
+    <a href="{{ '/about/'  | relative_url }}">ABOUT</a>
   </div>
 
+  <!-- Injected page content -->
   <div class="content">
     {{ content }}
   </div>
 
   <script>
+    // Toggle mobile menu visibility
     function toggleMenu() {
-      var m = document.getElementById("mobileMenu");
-      m.style.display = (getComputedStyle(m).display === "flex") ? "none" : "flex";
+      var menu = document.getElementById("mobileMenu");
+      menu.style.display =
+        getComputedStyle(menu).display === "flex" ? "none" : "flex";
     }
   </script>
+
 </body>
 </html>
