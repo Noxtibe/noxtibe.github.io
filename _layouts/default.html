@@ -22,37 +22,97 @@
       line-height: 1.6;
     }
 
-    /* -------------------------------------
-       Video Hero Styles (only on homepage)
-       ------------------------------------- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} – {{ site.title }}</title>
+  <style>
+    /* … your reset, dark theme, nav, menu, etc. … */
+
+    /* ----------- Hero container & video ------------ */
     {% if page.url == "/" %}
-    /* Video covers entire viewport, sits behind everything */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
     .hero-video {
-      position: fixed;
-      top: 0; left: 0;
+      position: absolute;
+      top: 50%; left: 50%;
       width: 100%; height: 100%;
+      transform: translate(-50%, -50%);
       object-fit: cover;
       z-index: -1;
     }
-    /* Title centered over video */
-    .hero-title {
+    .hero-content {
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ffffff;
-      font-size: 4vw;
+      inset: 0;              /* shorthand for top/right/bottom/left:0 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      padding: 0 1rem;       /* gutter on small screens */
       z-index: 1;
-      white-space: pre-wrap;
     }
-    /* Slightly larger text on very small screens */
+    .hero-content h1 {
+      color: #ffffff;
+      font-size: clamp(2rem, 8vw, 3rem);
+      margin: 0;
+      text-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
     @media (max-width: 480px) {
-      .hero-title {
-        font-size: 8vw;
+      .hero-content h1 {
+        font-size: clamp(2rem, 10vw, 2.5rem);
       }
     }
     {% endif %}
+
+  {% if page.url == "/" %}
+  <!-- HERO ON HOME PAGE ONLY -->
+  <div class="hero-container">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>{{ site.title }}</h1>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- NAVBAR (always visible) -->
+  <div class="navbar">
+    <div class="logo">{{ site.title }}</div>
+    <div class="menu">
+      <a href="{{ '/' | relative_url }}">HOME</a>
+      <a href="{{ '/games/' | relative_url }}">GAMES</a>
+      <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="{{ '/' | relative_url }}">HOME</a>
+    <a href="{{ '/games/' | relative_url }}">GAMES</a>
+    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var m = document.getElementById("mobileMenu");
+      m.style.display = getComputedStyle(m).display === "flex"
+        ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
+
 
     /* ----------------
        Navbar & Menu
