@@ -7,13 +7,11 @@
   <title>{{ page.title }} – {{ site.title }}</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ '/favicon_512x512.png' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' | relative_url }}">
 
-  <!-- Preconnect to Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Load Poppins font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -109,10 +107,11 @@
       display: flex;
       flex-direction: column;
       background-color: #000000;
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      height: 100%;
       overflow: hidden;
       max-height: 0;
       z-index: 9999;
@@ -158,7 +157,7 @@
       100% { transform: scale(1); }
     }
 
-    /* Homepage video */
+    /* Homepage video with fade-in */
     {% if page.url == "/" %}
     .hero-container {
       position: relative;
@@ -227,10 +226,8 @@
     .about-description p {
       max-width: 800px;
       font-size: 1.6rem;
+      line-height: 2;
       margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeIn 1.5s ease forwards;
-      animation-delay: 0.4s;
     }
 
     .about-socials {
@@ -257,12 +254,23 @@
       transform: scale(1.2);
     }
 
+    /* Link styling for highlighted words */
+    .highlight-link {
+      color: #FFA500;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .highlight-link:hover {
+      color: #cc8400;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive adjustments for About page */
     @media (max-width: 768px) {
       .profile-picture img {
         width: 200px;
@@ -279,38 +287,11 @@
       }
     }
 
-    /* Page content */
     .content {
       padding: 2rem;
       position: relative;
       z-index: 2;
       font-weight: 300;
-    }
-
-    /* Custom link style for highlighted words */
-    .highlight-link {
-    color: #FFA500;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-    }
-
-    .highlight-link:hover {
-    color: #cc8400; /* Slightly darker orange on hover */
-    }
-
-    /* Adjust line length and spacing for About description */
-    .about-description p {
-    max-width: 900px; /* Increased line length */
-    font-size: 1.6rem;
-    line-height: 1.8; /* Tighter spacing */
-    margin-bottom: 2rem;
-    }
-
-    .about-description p br {
-    margin-bottom: 1rem;
-    display: block;
-    content: "";
     }
   </style>
 </head>
