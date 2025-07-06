@@ -16,19 +16,33 @@ permalink: /about/
     <p>
       Hi! I'm Benoit BARRAU, currently in the 5th year of a master's degree in video games, specialising in gameplay programming at
       <a href="https://www.artfx.fr/" target="_blank" class="highlight-link">Artfx</a>.
+    </p>
 
+    <p>
       I learnt a lot of things, like C++, C#, 2D & 3D rendering, game design and teamwork.
+    </p>
 
+    <p>
       I spent a lot of time on Unreal, learning myself how to make VFX and add it to my personal projects.
+    </p>
 
+    <p>
       Driven by my passion for video games, I became a gameplay programmer to bring unique mechanics and systems to life.
+    </p>
 
+    <p>
       I like to study game mechanics, find out how they were made and reproduce them to understand them better.
+    </p>
 
+    <p>
       I’m excited to join a team that encourages idea-sharing across both creative and technical aspects of development.
+    </p>
 
+    <p>
       Taking part in team projects is exciting and makes me want to know how others are working to create the best possible experience for the players.
+    </p>
 
+    <p>
       If you're interested, you can find my team projects in the
       <a href="{{ '/games/' | relative_url }}" class="highlight-link">Games</a> section.
     </p>
