@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Squeaky Toy
+title: Squeaky
 permalink: /games/squeaky/
 video: /assets/WEB_Squeaky_Pres.mp4
 tags:

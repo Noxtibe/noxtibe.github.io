@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Giggle Protocol
+title: Giggle
 permalink: /games/giggle/
 video: /assets/WEB_Giggle_Pres.mp4
 tags:
