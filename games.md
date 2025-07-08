@@ -15,7 +15,7 @@ permalink: /games/
 
   .game-entry {
     width: 100%;
-    max-width: 960px;
+    max-width: 1200px;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease, transform 1s ease;
@@ -28,20 +28,21 @@ permalink: /games/
 
   .game-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #ffffff; /* Blanc */
+    color: #ffffff;
   }
 
   .game-video {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     cursor: pointer;
     transition: transform 0.3s;
+    background-color: #000;
   }
 
   .game-video:hover {
@@ -58,7 +59,7 @@ permalink: /games/
 
   .tag {
     background-color: #333;
-    color: #ffffff; /* Blanc */
+    color: #ffffff;
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
     border-radius: 12px;
@@ -68,94 +69,59 @@ permalink: /games/
 
 <div class="games-container">
 
-  <div class="game-entry" data-fade>
-    <div class="game-title">Terminus</div>
-    <a href="{{ '/games/terminus/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_Terminus_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause()"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">C++</div>
-      <div class="tag">Unreal 5</div>
-      <div class="tag">Perforce</div>
-      <div class="tag">3rd Person</div>
-      <div class="tag">Survival-Horror</div>
-    </div>
-  </div>
+  {% assign games = 
+    site.data.games | default: 
+    [
+      {
+        "title": "Terminus",
+        "url": "/games/terminus/",
+        "src": "/assets/WEB_Terminus_Pres.mp4",
+        "tags": "C++,Unreal 5,Perforce,3rd Person,Survival-Horror"
+      },
+      {
+        "title": "The Diig",
+        "url": "/games/thediig/",
+        "src": "/assets/WEB_TheDiig_Pres.mp4",
+        "tags": "Blueprint,Unreal 5,Git,3rd Person,Puzzle"
+      },
+      {
+        "title": "Squeaky Clean | Global Game Jam 2025",
+        "url": "/games/squeaky/",
+        "src": "/assets/WEB_Squeaky_Pres.mp4",
+        "tags": "Blueprint,Unreal 5,Git,3rd Person,Arcade,Casual"
+      },
+      {
+        "title": "Giggle Heist | Global Game Jam 2024",
+        "url": "/games/giggle/",
+        "src": "/assets/WEB_Giggle_Pres.mp4",
+        "tags": "Blueprint,Unreal 5,Git,Top View,Co-op"
+      }
+    ]
+  %}
 
-  <div class="game-entry" data-fade>
-    <div class="game-title">The Diig</div>
-    <a href="{{ '/games/thediig/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_TheDiig_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause()"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">Blueprint</div>
-      <div class="tag">Unreal 5</div>
-      <div class="tag">Git</div>
-      <div class="tag">3rd Person</div>
-      <div class="tag">Puzzle</div>
+  {% for game in games %}
+    <div class="game-entry" data-fade>
+      <div class="game-title">{{ game.title }}</div>
+      <a href="{{ game.url | relative_url }}">
+        <video
+          class="game-video lazy-video"
+          data-src="{{ game.src | relative_url }}"
+          muted
+          loop
+          playsinline
+          preload="none"
+          onmouseenter="this.play()"
+          onmouseleave="this.pause()"
+        ></video>
+      </a>
+      <div class="tag-container">
+        {% assign tags = game.tags | split: "," %}
+        {% for tag in tags %}
+          <div class="tag">{{ tag }}</div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-
-  <div class="game-entry" data-fade>
-    <div class="game-title">Squeaky Clean | Global Game Jam 2025</div>
-    <a href="{{ '/games/squeaky/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_Squeaky_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause()"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">Blueprint</div>
-      <div class="tag">Unreal 5</div>
-      <div class="tag">Git</div>
-      <div class="tag">3rd Person</div>
-      <div class="tag">Arcade</div>
-      <div class="tag">Casual</div>
-    </div>
-  </div>
-
-  <div class="game-entry" data-fade>
-    <div class="game-title">Giggle Heist | Global Game Jam 2024</div>
-    <a href="{{ '/games/giggle/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_Giggle_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause()"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">Blueprint</div>
-      <div class="tag">Unreal 5</div>
-      <div class="tag">Git</div>
-      <div class="tag">Top View</div>
-      <div class="tag">Co-op</div>
-    </div>
-  </div>
+  {% endfor %}
 
 </div>
 
@@ -175,4 +141,25 @@ permalink: /games/
 
   window.addEventListener('scroll', handleFadeIn);
   window.addEventListener('load', handleFadeIn);
+
+  // Lazy-load video src when in view
+  const lazyVideos = document.querySelectorAll('video.lazy-video');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        const src = video.getAttribute('data-src');
+        if (src) {
+          video.src = src;
+          video.removeAttribute('data-src');
+        }
+        obs.unobserve(video);
+      }
+    });
+  }, {
+    rootMargin: "200px 0px"
+  });
+
+  lazyVideos.forEach(video => observer.observe(video));
 </script>
