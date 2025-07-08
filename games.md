@@ -31,7 +31,7 @@ permalink: /games/
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #FFA500;
+    color: #ffffff; /* Blanc */
   }
 
   .game-video {
@@ -58,7 +58,7 @@ permalink: /games/
 
   .tag {
     background-color: #333;
-    color: #FFA500;
+    color: #ffffff; /* Blanc */
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
     border-radius: 12px;
@@ -109,7 +109,7 @@ permalink: /games/
   </div>
 
   <div class="game-entry" data-fade>
-    <div class="game-title">Squeaky</div>
+    <div class="game-title">Squeaky Clean</div>
     <a href="{{ '/games/squeaky/' | relative_url }}">
       <video
         class="game-video"
@@ -129,7 +129,7 @@ permalink: /games/
   </div>
 
   <div class="game-entry" data-fade>
-    <div class="game-title">Giggle</div>
+    <div class="game-title">Giggle Heist</div>
     <a href="{{ '/games/giggle/' | relative_url }}">
       <video
         class="game-video"
