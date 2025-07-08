@@ -9,13 +9,13 @@ permalink: /games/
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4rem;
-    padding: 4rem 2rem;
+    gap: 3rem;
+    padding: 2rem 1rem;
   }
 
   .game-entry {
     width: 100%;
-    max-width: 1200px;
+    max-width: 960px;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease, transform 1s ease;
@@ -28,7 +28,7 @@ permalink: /games/
 
   .game-title {
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: #ffffff;
@@ -39,10 +39,9 @@ permalink: /games/
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    cursor: pointer;
-    transition: transform 0.3s;
     background-color: #000;
+    transition: transform 0.3s;
+    cursor: pointer;
   }
 
   .game-video:hover {
@@ -64,6 +63,26 @@ permalink: /games/
     padding: 0.4rem 0.8rem;
     border-radius: 12px;
     font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .games-container {
+      gap: 2rem;
+      padding: 1rem 0.5rem;
+    }
+
+    .game-title {
+      font-size: 1.4rem;
+    }
+
+    .game-video {
+      border-radius: 10px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+    }
   }
 </style>
 
@@ -110,8 +129,6 @@ permalink: /games/
           loop
           playsinline
           preload="none"
-          onmouseenter="this.play()"
-          onmouseleave="this.pause()"
         ></video>
       </a>
       <div class="tag-container">
@@ -128,12 +145,10 @@ permalink: /games/
 <script>
   // Fade-in on scroll
   const fadeElements = document.querySelectorAll('[data-fade]');
-
   function handleFadeIn() {
     fadeElements.forEach(el => {
       const rect = el.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      if (rect.top < windowHeight - 100) {
+      if (rect.top < window.innerHeight - 100) {
         el.classList.add('visible');
       }
     });
@@ -142,18 +157,24 @@ permalink: /games/
   window.addEventListener('scroll', handleFadeIn);
   window.addEventListener('load', handleFadeIn);
 
-  // Lazy-load video src when in view
+  // Lazy loading with autoplay on mobile
   const lazyVideos = document.querySelectorAll('video.lazy-video');
+  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const video = entry.target;
         const src = video.getAttribute('data-src');
-        if (src) {
+        if (src && !video.src) {
           video.src = src;
-          video.removeAttribute('data-src');
+          video.load();
         }
+        if (isMobile) {
+          video.play().catch(() => {});
+        }
+
+        // Only once
         obs.unobserve(video);
       }
     });
@@ -161,5 +182,13 @@ permalink: /games/
     rootMargin: "200px 0px"
   });
 
-  lazyVideos.forEach(video => observer.observe(video));
+  lazyVideos.forEach(video => {
+    observer.observe(video);
+
+    // Desktop hover playback
+    if (!isMobile) {
+      video.addEventListener('mouseenter', () => video.play());
+      video.addEventListener('mouseleave', () => video.pause());
+    }
+  });
 </script>
