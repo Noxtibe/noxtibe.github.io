@@ -82,9 +82,11 @@ permalink: /games/
       ></video>
     </a>
     <div class="tag-container">
+      <div class="tag">C++</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Perforce</div>
       <div class="tag">3rd Person</div>
-      <div class="tag">Blueprint</div>
-      <div class="tag">Game Jam</div>
+      <div class="tag">Survival-Horror</div>
     </div>
   </div>
 
@@ -102,14 +104,16 @@ permalink: /games/
       ></video>
     </a>
     <div class="tag-container">
-      <div class="tag">2.5D</div>
-      <div class="tag">C++</div>
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Git</div>
+      <div class="tag">3rd Person</div>
       <div class="tag">Puzzle</div>
     </div>
   </div>
 
   <div class="game-entry" data-fade>
-    <div class="game-title">Squeaky Clean</div>
+    <div class="game-title">Squeaky Clean | Global Game Jam 2025</div>
     <a href="{{ '/games/squeaky/' | relative_url }}">
       <video
         class="game-video"
@@ -122,14 +126,17 @@ permalink: /games/
       ></video>
     </a>
     <div class="tag-container">
-      <div class="tag">Side Scroller</div>
-      <div class="tag">Solo Project</div>
-      <div class="tag">Funny</div>
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Git</div>
+      <div class="tag">3rd Person</div>
+      <div class="tag">Arcade</div>
+      <div class="tag">Casual</div>
     </div>
   </div>
 
   <div class="game-entry" data-fade>
-    <div class="game-title">Giggle Heist</div>
+    <div class="game-title">Giggle Heist | Global Game Jam 2024</div>
     <a href="{{ '/games/giggle/' | relative_url }}">
       <video
         class="game-video"
@@ -142,9 +149,11 @@ permalink: /games/
       ></video>
     </a>
     <div class="tag-container">
-      <div class="tag">AI</div>
-      <div class="tag">C++</div>
-      <div class="tag">Maze</div>
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Git</div>
+      <div class="tag">Top View</div>
+      <div class="tag">Co-op</div>
     </div>
   </div>
 
