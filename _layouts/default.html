@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ page.title }} – {{ site.title }}</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' | relative_url }}" />
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* Reset and base styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body,
-    html {
+    body, html {
       height: 100%;
-      font-family: 'Poppins', 'Arial', 'Helvetica', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #121212;
       color: #ffffff;
     }
@@ -41,9 +38,7 @@
       z-index: 2;
     }
 
-    .navbar-left,
-    .navbar-center,
-    .navbar-right {
+    .navbar-left, .navbar-center, .navbar-right {
       display: flex;
       align-items: center;
     }
@@ -73,19 +68,20 @@
     /* Hamburger */
     .hamburger {
       display: block;
-      width: 24px;
-      height: 18px;
+      width: 28px;
+      height: 20px;
       position: relative;
       cursor: pointer;
       user-select: none;
-      transition: transform 0.3s ease;
+      padding: 4px;
+      border-radius: 4px;
     }
 
     .hamburger span {
       display: block;
-      height: 3px;
+      height: 4px;
       width: 100%;
-      background-color: white;
+      background-color: #ffffff !important;
       border-radius: 2px;
       position: absolute;
       left: 0;
@@ -93,16 +89,17 @@
     }
 
     .hamburger span:nth-child(1) { top: 0; }
-    .hamburger span:nth-child(2) { top: 7.5px; }
-    .hamburger span:nth-child(3) { top: 15px; }
+    .hamburger span:nth-child(2) { top: 8px; }
+    .hamburger span:nth-child(3) { top: 16px; }
 
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg); top: 7.5px; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg); top: 8px; }
     .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg); top: 7.5px; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg); top: 8px; }
 
-    @media (min-width: 769px) { .hamburger { display: none; } }
+    @media (min-width: 769px) {
+      .hamburger { display: none; }
+    }
 
-    /* Mobile menu */
     .mobile-menu {
       display: flex;
       flex-direction: column;
@@ -133,9 +130,10 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 768px) { .menu { display: none; } }
+    @media (max-width: 768px) {
+      .menu { display: none; }
+    }
 
-    /* Social icons */
     .social-icon {
       width: 32px;
       height: 32px;
@@ -157,7 +155,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Homepage video with fade-in */
     {% if page.url == "/" %}
     .hero-container {
       position: relative;
@@ -181,7 +178,9 @@
     }
 
     @media (max-width: 768px) {
-      .hero-video { max-height: 60vh; }
+      .hero-video {
+        max-height: 60vh;
+      }
     }
 
     .hero-title {
@@ -200,7 +199,6 @@
     }
     {% endif %}
 
-    /* About page */
     .about-container {
       display: flex;
       flex-direction: column;
@@ -255,7 +253,6 @@
       transform: scale(1.2);
     }
 
-    /* Link styling for highlighted words */
     .highlight-link {
       color: #FFA500;
       text-decoration: none;
@@ -298,8 +295,6 @@
 </head>
 
 <body>
-
-  <!-- Navbar -->
   <div class="navbar">
     <div class="navbar-left">
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -308,7 +303,6 @@
         <span></span>
       </div>
     </div>
-
     <div class="navbar-center">
       <div class="menu">
         <a href="{{ '/' | relative_url }}">HOME</a>
@@ -316,21 +310,20 @@
         <a href="{{ '/about/' | relative_url }}">ABOUT</a>
       </div>
     </div>
-
     <div class="navbar-right">
       <a href="https://www.linkedin.com/in/benoit-barrau-927309355/" target="_blank">
+        <!-- LinkedIn SVG -->
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.45 8.98h4.78v2.05h.07c.67-1.26 2.31-2.59 4.76-2.59 5.1 0 6.04 3.36 6.04 7.72V24h-5v-7.23c0-1.73-.03-3.96-2.41-3.96-2.41 0-2.78 1.89-2.78 3.84V24h-5V8.98z"/>
         </svg>
       </a>
-
       <a href="https://github.com/Noxtibe" target="_blank">
+        <!-- GitHub SVG -->
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.165c-3.338.726-4.033-1.415-4.033-1.415-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.3-5.467-1.333-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.044.138 3.003.404 2.292-1.552 3.298-1.23 3.298-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.628-5.48 5.921.43.372.823 1.102.823 2.222v3.293c0 .321.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/>
         </svg>
       </a>
     </div>
-
     <div class="mobile-menu" id="mobileMenu">
       <a href="{{ '/' | relative_url }}">HOME</a>
       <a href="{{ '/games/' | relative_url }}">GAMES</a>
@@ -341,7 +334,7 @@
   {% if page.url == "/" %}
   <div class="hero-container">
     <video class="hero-video" autoplay muted loop playsinline>
-      <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4">
+      <source src="{{ '/assets/WEB_Homepage_Video.mp4' | relative_url }}" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="hero-title">Benoit BARRAU | Gameplay Programmer</div>
@@ -361,23 +354,21 @@
 
       if (!menuOpen) {
         menu.style.maxHeight = "500px";
-        hamburger.classList.add('active');
+        hamburger.classList.add("active");
       } else {
         menu.style.maxHeight = "0";
-        hamburger.classList.remove('active');
+        hamburger.classList.remove("active");
       }
       menuOpen = !menuOpen;
     }
 
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
         document.getElementById("mobileMenu").style.maxHeight = "0";
-        document.getElementById("hamburger").classList.remove('active');
+        document.getElementById("hamburger").classList.remove("active");
         menuOpen = false;
       });
     });
   </script>
-
 </body>
-
 </html>
