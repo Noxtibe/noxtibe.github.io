@@ -1,8 +1,14 @@
 ---
 layout: default
-title: Giggle
+title: Giggle Protocol
 permalink: /games/giggle/
+video: /assets/WEB_Giggle_Pres.mp4
+tags:
+  - 3rd Person
+  - UE5
+  - Horror
 ---
+
 
 # Giggle
 

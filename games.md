@@ -5,57 +5,54 @@ permalink: /games/
 ---
 
 <style>
-  .games-grid {
+  .games-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4rem;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
   }
 
-  .game-wrapper {
-    width: 100%;
+  .game-entry {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
     max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
     text-align: center;
   }
 
+  .game-entry.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .game-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 600;
+    color: #ffffff;
     margin-bottom: 1rem;
-    color: #FFA500;
-  }
-
-  .game-card {
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    background-color: #1f1f1f;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    text-decoration: none;
-    transition: transform 0.3s ease;
-  }
-
-  .game-card:hover {
-    transform: scale(1.01);
   }
 
   .game-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    border-radius: 16px;
     object-fit: cover;
+    aspect-ratio: 16 / 9;
     cursor: pointer;
-    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+  }
+
+  .game-video:hover {
+    transform: scale(1.01);
   }
 
   .tag-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 1rem;
+    margin-top: 1rem;
     justify-content: center;
   }
 
@@ -79,86 +76,45 @@ permalink: /games/
   }
 </style>
 
-<div class="games-grid">
-
-  <div class="game-wrapper">
-    <div class="game-title">Terminus</div>
-    <a class="game-card" href="{{ '/games/terminus/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_Terminus_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause(); this.currentTime = 0;"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">3rd Person</div>
-      <div class="tag">Blueprint</div>
-      <div class="tag">Game Jam</div>
+<div class="games-container">
+  {% assign games = 
+    site.pages | where_exp: "page", "page.categories contains 'game'" 
+  %}
+  {% for game in games %}
+    <div class="game-entry">
+      <h2 class="game-title">{{ game.title }}</h2>
+      <a href="{{ game.url | relative_url }}">
+        <video
+          class="game-video"
+          src="{{ '/assets/' | append: game.video | relative_url }}"
+          muted
+          loop
+          preload="metadata"
+          onmouseenter="this.play()"
+          onmouseleave="this.pause()"
+        ></video>
+      </a>
+      <div class="tag-container">
+        {% for tag in game.tags %}
+          <div class="tag">{{ tag }}</div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-
-  <div class="game-wrapper">
-    <div class="game-title">The Diig</div>
-    <a class="game-card" href="{{ '/games/thediig/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_TheDiig_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause(); this.currentTime = 0;"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">2.5D</div>
-      <div class="tag">C++</div>
-      <div class="tag">Narrative</div>
-    </div>
-  </div>
-
-  <div class="game-wrapper">
-    <div class="game-title">Squeaky</div>
-    <a class="game-card" href="{{ '/games/squeaky/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_Squeaky_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause(); this.currentTime = 0;"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">Platformer</div>
-      <div class="tag">Unreal</div>
-      <div class="tag">Puzzle</div>
-    </div>
-  </div>
-
-  <div class="game-wrapper">
-    <div class="game-title">Giggle</div>
-    <a class="game-card" href="{{ '/games/giggle/' | relative_url }}">
-      <video
-        class="game-video"
-        src="{{ '/assets/WEB_Giggle_Pres.mp4' | relative_url }}"
-        muted
-        loop
-        preload="metadata"
-        onmouseenter="this.play()"
-        onmouseleave="this.pause(); this.currentTime = 0;"
-      ></video>
-    </a>
-    <div class="tag-container">
-      <div class="tag">Multiplayer</div>
-      <div class="tag">Blueprint</div>
-      <div class="tag">Action</div>
-    </div>
-  </div>
-
+  {% endfor %}
 </div>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.game-entry').forEach(entry => {
+    observer.observe(entry);
+  });
+</script>
