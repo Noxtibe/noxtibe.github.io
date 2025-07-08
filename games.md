@@ -9,12 +9,28 @@ permalink: /games/
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 4rem;
     padding: 3rem 1rem;
   }
 
+  .game-wrapper {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .game-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #FFA500;
+  }
+
   .game-card {
-    width: 400px;
+    width: 100%;
     border-radius: 16px;
     overflow: hidden;
     background-color: #1f1f1f;
@@ -24,14 +40,13 @@ permalink: /games/
   }
 
   .game-card:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 
   .game-video {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 16px 16px 0 0;
     cursor: pointer;
     display: block;
   }
@@ -54,80 +69,96 @@ permalink: /games/
   }
 
   @media (max-width: 768px) {
-    .game-card {
-      width: 90%;
+    .game-title {
+      font-size: 1.5rem;
+    }
+
+    .game-video {
+      aspect-ratio: 1 / 1;
     }
   }
 </style>
 
 <div class="games-grid">
 
-  <a class="game-card" href="{{ '/games/terminus/' | relative_url }}">
-    <video
-      class="game-video"
-      src="{{ '/assets/WEB_Terminus_Pres.mp4' | relative_url }}"
-      muted
-      loop
-      preload="metadata"
-      onmouseenter="this.play()"
-      onmouseleave="this.pause(); this.currentTime = 0;"
-    ></video>
+  <div class="game-wrapper">
+    <div class="game-title">Terminus</div>
+    <a class="game-card" href="{{ '/games/terminus/' | relative_url }}">
+      <video
+        class="game-video"
+        src="{{ '/assets/WEB_Terminus_Pres.mp4' | relative_url }}"
+        muted
+        loop
+        preload="metadata"
+        onmouseenter="this.play()"
+        onmouseleave="this.pause(); this.currentTime = 0;"
+      ></video>
+    </a>
     <div class="tag-container">
       <div class="tag">3rd Person</div>
       <div class="tag">Blueprint</div>
       <div class="tag">Game Jam</div>
     </div>
-  </a>
+  </div>
 
-  <a class="game-card" href="{{ '/games/thediig/' | relative_url }}">
-    <video
-      class="game-video"
-      src="{{ '/assets/WEB_TheDiig_Pres.mp4' | relative_url }}"
-      muted
-      loop
-      preload="metadata"
-      onmouseenter="this.play()"
-      onmouseleave="this.pause(); this.currentTime = 0;"
-    ></video>
+  <div class="game-wrapper">
+    <div class="game-title">The Diig</div>
+    <a class="game-card" href="{{ '/games/thediig/' | relative_url }}">
+      <video
+        class="game-video"
+        src="{{ '/assets/WEB_TheDiig_Pres.mp4' | relative_url }}"
+        muted
+        loop
+        preload="metadata"
+        onmouseenter="this.play()"
+        onmouseleave="this.pause(); this.currentTime = 0;"
+      ></video>
+    </a>
     <div class="tag-container">
       <div class="tag">2.5D</div>
       <div class="tag">C++</div>
       <div class="tag">Narrative</div>
     </div>
-  </a>
+  </div>
 
-  <a class="game-card" href="{{ '/games/squeaky/' | relative_url }}">
-    <video
-      class="game-video"
-      src="{{ '/assets/WEB_Squeaky_Pres.mp4' | relative_url }}"
-      muted
-      loop
-      preload="metadata"
-      onmouseenter="this.play()"
-      onmouseleave="this.pause(); this.currentTime = 0;"
-    ></video>
+  <div class="game-wrapper">
+    <div class="game-title">Squeaky</div>
+    <a class="game-card" href="{{ '/games/squeaky/' | relative_url }}">
+      <video
+        class="game-video"
+        src="{{ '/assets/WEB_Squeaky_Pres.mp4' | relative_url }}"
+        muted
+        loop
+        preload="metadata"
+        onmouseenter="this.play()"
+        onmouseleave="this.pause(); this.currentTime = 0;"
+      ></video>
+    </a>
     <div class="tag-container">
       <div class="tag">Platformer</div>
       <div class="tag">Unreal</div>
       <div class="tag">Puzzle</div>
     </div>
-  </a>
+  </div>
 
-  <a class="game-card" href="{{ '/games/giggle/' | relative_url }}">
-    <video
-      class="game-video"
-      src="{{ '/assets/WEB_Giggle_Pres.mp4' | relative_url }}"
-      muted
-      loop
-      preload="metadata"
-      onmouseenter="this.play()"
-      onmouseleave="this.pause(); this.currentTime = 0;"
-    ></video>
+  <div class="game-wrapper">
+    <div class="game-title">Giggle</div>
+    <a class="game-card" href="{{ '/games/giggle/' | relative_url }}">
+      <video
+        class="game-video"
+        src="{{ '/assets/WEB_Giggle_Pres.mp4' | relative_url }}"
+        muted
+        loop
+        preload="metadata"
+        onmouseenter="this.play()"
+        onmouseleave="this.pause(); this.currentTime = 0;"
+      ></video>
+    </a>
     <div class="tag-container">
       <div class="tag">Multiplayer</div>
       <div class="tag">Blueprint</div>
       <div class="tag">Action</div>
     </div>
-  </a>
+  </div>
 
 </div>
