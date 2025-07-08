@@ -9,8 +9,8 @@ permalink: /games/
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    padding: 2rem 1rem;
+    gap: 4rem;
+    padding: 4rem 2rem;
   }
 
   .game-entry {
@@ -36,12 +36,12 @@ permalink: /games/
 
   .game-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 16px;
-    background-color: #000;
-    transition: transform 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     cursor: pointer;
+    transition: transform 0.3s;
   }
 
   .game-video:hover {
@@ -67,16 +67,12 @@ permalink: /games/
 
   @media (max-width: 768px) {
     .games-container {
+      padding: 2rem 1rem;
       gap: 2rem;
-      padding: 1rem 0.5rem;
     }
 
     .game-title {
-      font-size: 1.4rem;
-    }
-
-    .game-video {
-      border-radius: 10px;
+      font-size: 1.5rem;
     }
 
     .tag {
@@ -88,57 +84,90 @@ permalink: /games/
 
 <div class="games-container">
 
-  {% assign games = 
-    site.data.games | default: 
-    [
-      {
-        "title": "Terminus",
-        "url": "/games/terminus/",
-        "src": "/assets/WEB_Terminus_Pres.mp4",
-        "tags": "C++,Unreal 5,Perforce,3rd Person,Survival-Horror"
-      },
-      {
-        "title": "The Diig",
-        "url": "/games/thediig/",
-        "src": "/assets/WEB_TheDiig_Pres.mp4",
-        "tags": "Blueprint,Unreal 5,Git,3rd Person,Puzzle"
-      },
-      {
-        "title": "Squeaky Clean | Global Game Jam 2025",
-        "url": "/games/squeaky/",
-        "src": "/assets/WEB_Squeaky_Pres.mp4",
-        "tags": "Blueprint,Unreal 5,Git,3rd Person,Arcade,Casual"
-      },
-      {
-        "title": "Giggle Heist | Global Game Jam 2024",
-        "url": "/games/giggle/",
-        "src": "/assets/WEB_Giggle_Pres.mp4",
-        "tags": "Blueprint,Unreal 5,Git,Top View,Co-op"
-      }
-    ]
-  %}
-
-  {% for game in games %}
-    <div class="game-entry" data-fade>
-      <div class="game-title">{{ game.title }}</div>
-      <a href="{{ game.url | relative_url }}">
-        <video
-          class="game-video lazy-video"
-          data-src="{{ game.src | relative_url }}"
-          muted
-          loop
-          playsinline
-          preload="none"
-        ></video>
-      </a>
-      <div class="tag-container">
-        {% assign tags = game.tags | split: "," %}
-        {% for tag in tags %}
-          <div class="tag">{{ tag }}</div>
-        {% endfor %}
-      </div>
+  <div class="game-entry" data-fade>
+    <div class="game-title">Terminus</div>
+    <a href="{{ '/games/terminus/' | relative_url }}">
+      <video
+        class="game-video lazy-video"
+        muted
+        loop
+        preload="none"
+        playsinline
+        data-src="{{ '/assets/WEB_Terminus_Pres.mp4' | relative_url }}"
+      ></video>
+    </a>
+    <div class="tag-container">
+      <div class="tag">C++</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Perforce</div>
+      <div class="tag">3rd Person</div>
+      <div class="tag">Survival-Horror</div>
     </div>
-  {% endfor %}
+  </div>
+
+  <div class="game-entry" data-fade>
+    <div class="game-title">The Diig</div>
+    <a href="{{ '/games/thediig/' | relative_url }}">
+      <video
+        class="game-video lazy-video"
+        muted
+        loop
+        preload="none"
+        playsinline
+        data-src="{{ '/assets/WEB_TheDiig_Pres.mp4' | relative_url }}"
+      ></video>
+    </a>
+    <div class="tag-container">
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Git</div>
+      <div class="tag">3rd Person</div>
+      <div class="tag">Puzzle</div>
+    </div>
+  </div>
+
+  <div class="game-entry" data-fade>
+    <div class="game-title">Squeaky Clean | Global Game Jam 2025</div>
+    <a href="{{ '/games/squeaky/' | relative_url }}">
+      <video
+        class="game-video lazy-video"
+        muted
+        loop
+        preload="none"
+        playsinline
+        data-src="{{ '/assets/WEB_Squeaky_Pres.mp4' | relative_url }}"
+      ></video>
+    </a>
+    <div class="tag-container">
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Git</div>
+      <div class="tag">3rd Person</div>
+      <div class="tag">Arcade</div>
+      <div class="tag">Casual</div>
+    </div>
+  </div>
+
+  <div class="game-entry" data-fade>
+    <div class="game-title">Giggle Heist | Global Game Jam 2024</div>
+    <a href="{{ '/games/giggle/' | relative_url }}">
+      <video
+        class="game-video lazy-video"
+        muted
+        loop
+        preload="none"
+        playsinline
+        data-src="{{ '/assets/WEB_Giggle_Pres.mp4' | relative_url }}"
+      ></video>
+    </a>
+    <div class="tag-container">
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Git</div>
+      <div class="tag">Top View</div>
+      <div class="tag">Co-op</div>
+    </div>
+  </div>
 
 </div>
 
@@ -148,47 +177,35 @@ permalink: /games/
   function handleFadeIn() {
     fadeElements.forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < windowHeight - 100) {
         el.classList.add('visible');
       }
     });
   }
-
   window.addEventListener('scroll', handleFadeIn);
   window.addEventListener('load', handleFadeIn);
 
-  // Lazy loading with autoplay on mobile
-  const lazyVideos = document.querySelectorAll('video.lazy-video');
-  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-
-  const observer = new IntersectionObserver((entries, obs) => {
+  // Lazy-load videos via IntersectionObserver
+  const lazyVideos = document.querySelectorAll('.lazy-video');
+  const videoObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const video = entry.target;
-        const src = video.getAttribute('data-src');
-        if (src && !video.src) {
+        const src = video.dataset.src;
+        if (src) {
           video.src = src;
           video.load();
+          video.dataset.src = "";
         }
-        if (isMobile) {
-          video.play().catch(() => {});
-        }
-
-        // Only once
-        obs.unobserve(video);
+        videoObserver.unobserve(video);
       }
     });
   }, {
-    rootMargin: "200px 0px"
+    threshold: 0.25
   });
 
   lazyVideos.forEach(video => {
-    observer.observe(video);
-
-    // Desktop hover playback
-    if (!isMobile) {
-      video.addEventListener('mouseenter', () => video.play());
-      video.addEventListener('mouseleave', () => video.pause());
-    }
+    videoObserver.observe(video);
   });
 </script>
