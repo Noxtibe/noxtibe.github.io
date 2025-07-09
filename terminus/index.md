@@ -10,7 +10,7 @@ permalink: /games/terminus/
     flex-direction: column;
     align-items: center;
     padding: 4rem 2rem;
-    max-width: 960px;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
   }
@@ -24,6 +24,7 @@ permalink: /games/terminus/
   .game-detail-video {
     width: 100%;
     max-width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
@@ -62,18 +63,18 @@ permalink: /games/terminus/
     class="game-detail-video"
     src="{{ '/assets/WEB_Terminus_Trailer.mp4' | relative_url }}"
     muted
-    autoplay
     loop
     playsinline
     controls
   ></video>
 
   <div class="game-description">
-    <strong>Pitch :</strong> Terminus is a survival-horror game where the player has to explore a mysterious train station overrun by shadowy creatures, gather resources, and unravel the mystery of their origin while trying to escape.
+    <strong>Pitch :</strong> Paris, 1968, as the city descends into social chaos, a much darker threat emerges from the depths. Charles MERCIER, a former soldier recruited by a secret organisation, is sent into the metro to stop an impending disaster.
   </div>
 
   <div class="role-description">
-    <strong>My Role :</strong> I worked on the core gameplay systems in Unreal Engine 5 using C++. I was responsible for the shooting mechanics, the inventory system, the dynamic lighting interactions, and the enemy AI behavior.
+    <strong>My Role :</strong> On this project, I worked on the weapon reloading system, a system for controlling the game's lights in real time and a dialogue system.
+    I also did almost all the VFX, helped with optimisation, debugging, and much more.
   </div>
 
 </div>
