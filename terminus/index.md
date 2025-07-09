@@ -10,23 +10,23 @@ permalink: /games/terminus/
     flex-direction: column;
     align-items: center;
     padding: 4rem 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     text-align: center;
   }
 
   .game-detail-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     color: #ffffff;
     margin-bottom: 1rem;
   }
 
   .game-links {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.3rem;
     color: #ffffff;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -34,7 +34,7 @@ permalink: /games/terminus/
   .game-links a {
     text-decoration: none;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 700;
     transition: color 0.3s ease, transform 0.3s ease;
   }
 
@@ -49,17 +49,26 @@ permalink: /games/terminus/
     height: auto;
     aspect-ratio: 16 / 9;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    margin-bottom: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    margin-bottom: 3rem;
   }
 
   .game-description,
   .role-description {
     color: #ffffff;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    line-height: 2;
+    margin-bottom: 2.5rem;
     text-align: left;
+    max-width: 960px;
+  }
+
+  .game-description strong,
+  .role-description strong {
+    color: #FFA500;
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
   }
 
   @media (max-width: 768px) {
@@ -68,11 +77,11 @@ permalink: /games/terminus/
     }
 
     .game-detail-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
 
     .game-links {
-      font-size: 1rem;
+      font-size: 1.1rem;
       flex-direction: column;
       gap: 0.5rem;
     }
@@ -80,6 +89,11 @@ permalink: /games/terminus/
     .game-description,
     .role-description {
       font-size: 1rem;
+    }
+
+    .game-description strong,
+    .role-description strong {
+      font-size: 1.3rem;
     }
   }
 </style>
@@ -103,11 +117,14 @@ permalink: /games/terminus/
   ></video>
 
   <div class="game-description">
-    <strong>Pitch :</strong> Paris, 1968, as the city descends into social chaos, a much darker threat emerges from the depths. Charles MERCIER, a former soldier recruited by a secret organisation, is sent into the metro to stop an impending disaster.
+    <strong>Pitch :</strong>
+    Paris, 1968, as the city descends into social chaos, a much darker threat emerges from the depths.  
+    Charles MERCIER, a former soldier recruited by a secret organisation, is sent into the metro to stop an impending disaster.
   </div>
 
   <div class="role-description">
-    <strong>My Role :</strong> On this project, I worked on the weapon reloading system, a system for controlling the game's lights in real time and a dialogue system.
+    <strong>My Role :</strong>
+    On this project, I worked on the weapon reloading system, a system for controlling the game's lights in real time and a dialogue system.  
     I also did almost all the VFX, helped with optimisation, debugging, and much more.
   </div>
 
