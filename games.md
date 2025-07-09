@@ -93,6 +93,8 @@ permalink: /games/
         loop
         preload="none"
         playsinline
+        onmouseenter="this.play()"
+        onmouseleave="this.pause()"
         data-src="{{ '/assets/WEB_Terminus_Pres.mp4' | relative_url }}"
       ></video>
     </a>
@@ -114,6 +116,8 @@ permalink: /games/
         loop
         preload="none"
         playsinline
+        onmouseenter="this.play()"
+        onmouseleave="this.pause()"
         data-src="{{ '/assets/WEB_TheDiig_Pres.mp4' | relative_url }}"
       ></video>
     </a>
@@ -135,6 +139,8 @@ permalink: /games/
         loop
         preload="none"
         playsinline
+        onmouseenter="this.play()"
+        onmouseleave="this.pause()"
         data-src="{{ '/assets/WEB_Squeaky_Pres.mp4' | relative_url }}"
       ></video>
     </a>
@@ -157,6 +163,8 @@ permalink: /games/
         loop
         preload="none"
         playsinline
+        onmouseenter="this.play()"
+        onmouseleave="this.pause()"
         data-src="{{ '/assets/WEB_Giggle_Pres.mp4' | relative_url }}"
       ></video>
     </a>
@@ -186,7 +194,7 @@ permalink: /games/
   window.addEventListener('scroll', handleFadeIn);
   window.addEventListener('load', handleFadeIn);
 
-  // Lazy-load videos via IntersectionObserver
+  // Lazy-load videos with IntersectionObserver
   const lazyVideos = document.querySelectorAll('.lazy-video');
   const videoObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
