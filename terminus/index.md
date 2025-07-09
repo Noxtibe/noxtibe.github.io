@@ -18,7 +18,29 @@ permalink: /games/terminus/
   .game-detail-title {
     font-size: 2.5rem;
     color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .game-links {
     margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #ffffff;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .game-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .game-links a:hover {
+    color: #FFA500;
+    transform: scale(1.1);
   }
 
   .game-detail-video {
@@ -31,7 +53,8 @@ permalink: /games/terminus/
     margin-bottom: 2rem;
   }
 
-  .game-description, .role-description {
+  .game-description,
+  .role-description {
     color: #ffffff;
     font-size: 1.2rem;
     line-height: 1.8;
@@ -48,9 +71,15 @@ permalink: /games/terminus/
       font-size: 2rem;
     }
 
-    .game-description, .role-description {
+    .game-links {
       font-size: 1rem;
-      text-align: left;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .game-description,
+    .role-description {
+      font-size: 1rem;
     }
   }
 </style>
@@ -58,6 +87,11 @@ permalink: /games/terminus/
 <div class="game-detail-container">
 
   <div class="game-detail-title">Terminus</div>
+
+  <div class="game-links">
+    <a href="https://store.steampowered.com/app/3823450/Terminus/" target="_blank">Coming soon on Steam</a> |
+    <a href="https://artfx-school.itch.io/terminus" target="_blank">Download on Itch.io</a>
+  </div>
 
   <video
     class="game-detail-video"
