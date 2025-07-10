@@ -45,10 +45,9 @@ permalink: /games/giggle/
 
   .game-detail-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 960px;
     height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     margin-bottom: 3rem;
@@ -109,7 +108,7 @@ permalink: /games/giggle/
 
   <img
     class="game-detail-image"
-    src="{{ '/assets/WEB_Giggle_Image.jpg' | relative_url }}"
+    src="{{ '/assets/WEB_Giggle_Image.png' | relative_url }}"
     alt="Giggle Heist Screenshot"
   />
 
