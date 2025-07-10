@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Squeaky
+title: Squeaky Clean
 permalink: /games/squeaky/
 ---
 
