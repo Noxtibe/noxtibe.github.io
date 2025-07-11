@@ -103,7 +103,7 @@ permalink: /games/terminus/
   <div class="game-detail-title">Terminus</div>
 
   <div class="game-links">
-    <a href="https://store.steampowered.com/app/3823450/Terminus/" target="_blank">Coming soon on Steam</a> |
+    <a href="https://store.steampowered.com/app/3823450/Terminus/" target="_blank">Download on Steam</a> |
     <a href="https://artfx-school.itch.io/terminus" target="_blank">Download on Itch.io</a>
   </div>
 
