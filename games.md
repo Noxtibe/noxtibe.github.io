@@ -108,6 +108,23 @@ permalink: /games/
   </div>
 
   <div class="game-entry" data-fade>
+    <div class="game-title">Demoreel 2025</div>
+    <a href="{{ '/games/demoreel2025/' | relative_url }}">
+      <img
+        class="game-video"
+        src="{{ '/assets/WEB_GAME5_PROG_BARRAU_Benoit_Demoreel2025.mp4' | relative_url }}"
+        alt="Demoreel 2025 Thumbnail"
+      />
+    </a>
+    <div class="tag-container">
+      <div class="tag">C++</div>
+      <div class="tag">Blueprint</div>
+      <div class="tag">Unreal 5</div>
+      <div class="tag">Personal Project</div>
+    </div>
+  </div>
+
+  <div class="game-entry" data-fade>
     <div class="game-title">The Diig</div>
     <a href="{{ '/games/thediig/' | relative_url }}">
       <video
