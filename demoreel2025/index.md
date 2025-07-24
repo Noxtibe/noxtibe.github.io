@@ -43,14 +43,25 @@ permalink: /games/demoreel2025/
     transform: scale(1.1);
   }
 
-  .game-detail-video {
+  .youtube-wrapper {
+    position: relative;
     width: 100%;
     max-width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
     border-radius: 16px;
+    overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     margin-bottom: 3rem;
+  }
+
+  .youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   .game-description,
@@ -103,12 +114,11 @@ permalink: /games/demoreel2025/
   <div class="game-detail-title">Demoreel 2025</div>
 
   <div class="game-links">
-    <!-- You can add download or GitHub links here later if needed -->
+    <!-- Optional: Add links like GitHub, Portfolio, etc. -->
   </div>
 
-  <div class="game-detail-video-wrapper">
+  <div class="youtube-wrapper">
     <iframe
-      class="game-detail-video"
       src="https://www.youtube.com/embed/XNJJOA3aPqU"
       title="Demoreel 2025"
       frameborder="0"
