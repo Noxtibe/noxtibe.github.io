@@ -103,18 +103,19 @@ permalink: /games/demoreel2025/
   <div class="game-detail-title">Demoreel 2025</div>
 
   <div class="game-links">
+    <!-- You can add download or GitHub links here later if needed -->
   </div>
 
-<div class="game-detail-video-wrapper">
-  <iframe
-    class="game-detail-video"
-    src="https://www.youtube.com/watch?v=XNJJOA3aPqU"
-    title="Demoreel 2025"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
-</div>
+  <div class="game-detail-video-wrapper">
+    <iframe
+      class="game-detail-video"
+      src="https://www.youtube.com/embed/XNJJOA3aPqU"
+      title="Demoreel 2025"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
 
   <div class="game-description">
     <strong>Pitch :</strong>
