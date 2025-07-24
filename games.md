@@ -112,7 +112,7 @@ permalink: /games/
     <a href="{{ '/games/demoreel2025/' | relative_url }}">
       <img
         class="game-video"
-        src="{{ '/assets/WEB_GAME5_PROG_BARRAU_Benoit_Demoreel2025.mp4' | relative_url }}"
+        src="{{ '/assets/WEB_Demoreel_2025_Preview' | relative_url }}"
         alt="Demoreel 2025 Thumbnail"
       />
     </a>
